@@ -17,12 +17,13 @@ export default {
     state.yards = state.yards.concat(yards)
   }),
 
-
-  insertYard: ((state, yard) => {
-    return state.yards.push(yard)
+  setFoodCategories:((state,foodCategories)=>{
+    state.foodCatOpt=[...foodCategories]
   }),
 
-
+  insertYard: ((state) => {
+    state.yards.push(state.editedYard)
+  }),
 
   resetEditedYardId: ((state) => state.editedYardId = ''),
 
@@ -34,9 +35,9 @@ export default {
     delete state.editedYard.id;
   }),
 
-  editYard: ((state, yard) => {
-    const index = state.yards.findIndex(y => y.id === yard.id)
-    state.yards.splice(index, 1, yard)
+  editYard: ((state) => {
+    const index = state.yards.findIndex(y => y.id === state.editedYard.id)
+    state.yards.splice(index, 1, state.editedYard)
   }),
 
   deleteYard: ((state, yardId) => {

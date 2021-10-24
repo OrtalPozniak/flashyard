@@ -1,7 +1,9 @@
 <template>
     <div>
-      <div class="card"  :style="{backgroundImage:`linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)),
-      url(${yard.cover})`}">
+      <!------------------------------------show card cover--------------------------------------
+      :style="{backgroundImage:`linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)),
+      url(${yard.cover})`}"-->
+      <div class="card"  >
         <div class="card-headers">
           <h4 class="card-title">{{ yard.yardName }}</h4>
           <h4 class="card-category">קטגוריה:
@@ -54,6 +56,7 @@ export default {
     }
   },
   computed: {
+
   },
   methods: {
     ...mapActions('yards', ['setEditedYardById']),
@@ -63,6 +66,7 @@ export default {
      *     open yard in singlePage                 *
      ***********************************************/
     goToItem(id) {
+      debugger
       this.setEditedYardId(id)
       this.setEditedYardById()
       this.$router.push(`/YardPage${id}`)

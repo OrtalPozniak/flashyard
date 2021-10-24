@@ -1,7 +1,6 @@
 <template>
   <div class="feed">
-    <YardCard v-for="yard of this.myYards" :yard="yard"/>
-    <q-img class="loading-circles"  v-if="loading" :src="url"/>
+    <YardCard v-for="yard of myYards" :yard="yard"/>
     <InfiniteLoading @infinite="infiniteHandler">
       <span class="noMore" slot="no-more">
       אין חצרות נוספות
@@ -19,21 +18,18 @@ export default {
   name: "Feed",
   components: {YardCard, InfiniteLoading},
   computed: {
-    ...mapState('users',['users','newUser']),
-    ...mapState('yards', ['yards', 'yardsCount'])
+    ...mapState('yards', ['yards', 'yardsCount','foodCatOpt'])
   },
   data() {
     return {
       myYards: [],
-      startPoint: 0,
-      loading:false,
-      url:'https://i.stack.imgur.com/h6viz.gif'
+      loading: false,
     }
   },
 
   methods: {
-    ...mapActions('yards', ['readYards']),
-    ...mapActions('users', ['setUserDataToLocal']),
+    ...mapActions('yards', ['readYards','getFoodCategory']),
+
     /***********************loadData*****************
      *load all yards and show them in the feed      *
      ***********************************************/
@@ -46,10 +42,11 @@ export default {
           }
           return false;
         })
+
     },
     /*****************infiniteHandler*****************
-     *this function make infinity scroll pagination   *
-     ***********************************************/
+     *this function make infinity scroll pagination  *
+     ************************************************/
     async infiniteHandler($state) {
       if (this.yardsCount) {
         const newYards = await this.loadData()
@@ -64,8 +61,13 @@ export default {
   },
  //todo fix get error 404
   created() {
+    if(!this.foodCatOpt.length)
+      this.getFoodCategory()
+    debugger
     this.myYards = [...this.yards]
   }
+
+
 }
 </script>
 

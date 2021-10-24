@@ -131,12 +131,15 @@ export default {
       this.leftDrawerOpen = !this.leftDrawerOpen
     },
     itemRef(chosenItem){
-      if (chosenItem.title !== "התנתק" && chosenItem.title !== "החצר שלי"){
+      if (chosenItem.title !== "התנתק"&&chosenItem.title!=="החצר שלי"&&chosenItem.title!=="הוסף חצר"){
         this.$router.push(chosenItem.link)
-      }else if (chosenItem.title === "החצר שלי"){
-        const currentYard = JSON.parse(localStorage.getItem("yardId"))
-        console.log(currentYard)
-        this.$router.push(`${chosenItem.link}${currentYard}`)
+      }else if(chosenItem.title==="החצר שלי"){
+        const yard = JSON.parse(localStorage.getItem('yardId'))
+        debugger;
+        console.log(yard)
+        this.$router.push(`${chosenItem.link}${yard}`)
+      }else if (chosenItem.title==="הוסף חצר"){
+        this.$router.push(chosenItem.link)
       }
       else{
         this.signOutAction()

@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import {mapState,mapActions} from 'vuex'
+import {mapState,mapActions,mapMutations} from 'vuex'
 
 export default {
   name: "YardPage",
@@ -84,6 +84,7 @@ export default {
   },
   methods:{
     ...mapActions('yards',['setEditedYardById']),
+    ...mapMutations('yards',['setEditedYardId']),
     nav(){
       this.$router.push('/order')
     },
@@ -92,8 +93,9 @@ export default {
     },
   },
   created() {
+    debugger
     if (!this.editedYardId){
-      this.setEditedYardById(this.$route.params.id)
+      this.setEditedYardId(this.$route.params.id)
     }
   }
 }

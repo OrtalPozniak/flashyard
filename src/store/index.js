@@ -4,7 +4,6 @@ import users from './users'
 import yards from './yards'
 import payment from './payment'
 
-
 Vue.use(Vuex)
 
 export default function (/* { ssrContext } */) {
@@ -15,6 +14,8 @@ export default function (/* { ssrContext } */) {
       yards,
       payment
     },
+    plugins: [
+    ],
     strict: process.env.DEBUGGING,
 
   })
