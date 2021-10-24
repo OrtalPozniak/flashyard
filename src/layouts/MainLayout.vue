@@ -131,9 +131,14 @@ export default {
       this.leftDrawerOpen = !this.leftDrawerOpen
     },
     itemRef(chosenItem){
-      if (chosenItem.title !== "התנתק"){
+      if (chosenItem.title !== "התנתק" && chosenItem.title !== "החצר שלי"){
         this.$router.push(chosenItem.link)
-      }else{
+      }else if (chosenItem.title === "החצר שלי"){
+        const currentYard = JSON.parse(localStorage.getItem("yardId"))
+        console.log(currentYard)
+        this.$router.push(`${chosenItem.link}${currentYard}`)
+      }
+      else{
         this.signOutAction()
       }
     },

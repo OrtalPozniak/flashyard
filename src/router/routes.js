@@ -5,6 +5,7 @@ const routes = [
       {path: 'feed', component: () => import('pages/Feed')},
       {path: 'order', component: () => import('pages/Order')},
       {path: 'yardPage:id', component: () => import('pages/YardPage')},
+      {path: 'addYard:id', component: () => import('pages/AddYard')},
       {path: 'addYard', component: () => import('pages/AddYard')},
       {path: 'sumOrder', component: () => import('pages/sumOrder')},
       {path: 'payment', component: () => import('pages/payment')},
@@ -20,10 +21,6 @@ const routes = [
   {
     path: '/reset',
     component: () => import('pages/ResetPassword')
-  },
-  {
-    path: '/test',
-    component: () => import('pages/test')
   },
   {
     path: '/:catchAll(.*)*',
