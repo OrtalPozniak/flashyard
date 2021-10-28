@@ -5,12 +5,12 @@
       <h1 v-else> החצר שלי </h1>
       <div>
         <input
-               name="yardName"
-               v-model="localEditedYard.yardName"
-               type="text"
-               class="fieldInput"
-               placeholder="שם החצר"
-               pattern="[A-Za-z]"/>
+          name="yardName"
+          v-model="localEditedYard.yardName"
+          type="text"
+          class="fieldInput"
+          placeholder="שם החצר"
+          pattern="[A-Za-z]"/>
         <input name="location"
                v-model="localEditedYard.location"
                type="text" class="fieldInput"
@@ -107,9 +107,9 @@
                min="10" max="100"/>
         <textarea v-model="localEditedYard.placeDesc" class="fieldInput" placeholder="פרטים על המקום"/>
         <div>
-          <button :disabled="btn_status" v-if="!localEditedYard.uidChef" class="btn" @click="createYard">הוסף חצר
+          <button :disabled="btn_status" v-if="!localEditedYard.uidChef" class="btn" @click="this.createYard">הוסף חצר
           </button>
-          <button v-else :disabled="btn_status" class="btn" @click="updatedYard">עדכן חצר</button>
+          <button v-else :disabled="btn_status" class="btn" @click="this.updatedYard">עדכן חצר</button>
 
         </div>
       </div>
@@ -151,40 +151,36 @@ export default {
     }
   },
   methods: {
-    ...mapActions('yards', ["insertYard", "createYardId","reset", "setEditedYardById", "updateYard", 'getFoodCategory']),
-    ...mapMutations('yards', ['setEditedYardId','setEditedYard']),
-    selectionRules(val)
-    {
-      if(val.length<=0)
+    ...mapActions('users',["setUserDataToLocal"]),
+    ...mapActions('yards', ["insertYard", "createYardId", "reset", "setEditedYardById", "updateYard", 'getFoodCategory']),
+    ...mapMutations('yards', ['setEditedYardId', 'setEditedYard']),
+    selectionRules(val) {
+      if (val.length <= 0)
         return 'עליך לבחור קטגוריה אחת לפחות'
     },
     async uploadImg(event) {
       this.uploadStatus = 0;
-      this.imagesToAdd = this.imagesToAdd.concat((await FS.uploadYardsImages({
+      this.imagesToAdd = this.imagesToAdd.concat((await FS.yards.uploadYardsImages({
         images: event,
         yardId: this.localEditedYard.id
       })))
     },
-      deleteImg(index) {
-      try{
-        FS.deleteYardsImages(this.imagesToAdd[index])
-      }
-      catch (ex)
-      {
-        console.log('error',ex)
+    deleteImg(index) {
+      try {
+        FS.yards.deleteYardsImages(this.imagesToAdd[index])
+      } catch (ex) {
+        console.log('error', ex)
       }
 
-        if(this.localEditedYard.cover===this.imagesToAdd[index])
-          this.localEditedYard.cover='https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
+      if (this.localEditedYard.cover === this.imagesToAdd[index])
+        this.localEditedYard.cover = 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg'
       this.imagesToAdd.splice(index, 1)
-        this.localEditedYard.imagesUrl=[...this.imagesToAdd]
+      this.localEditedYard.imagesUrl = [...this.imagesToAdd]
     },
     makeCover(index) {
       this.localEditedYard.cover = this.imagesToAdd[index]
-
     },
 
-    },
     async createYard() {
       this.clicked = true
       this.localEditedYard.imagesUrl = [...this.imagesToAdd]
@@ -198,7 +194,7 @@ export default {
     async updatedYard() {
       this.setEditedYard(this.localEditedYard)
       await this.updateYard().then(() => {
-        this.$router.push('/Feed')
+        this.$router.push('/feed')
       })
     },
     async init_page() {
@@ -206,18 +202,17 @@ export default {
         await this.getFoodCategory()
       }
       console.log(this.$route.params)
-      if(this.$route.params.id)
-      {
-        const id=this.$route.params.id;
+      if (this.$route.params.id) {
+        const id = this.$route.params.id;
         this.setEditedYardId(id)
         await this.setEditedYardById()
-        Object.assign(this.localEditedYard,this.editedYard)
+        Object.assign(this.localEditedYard, this.editedYard)
         this.imagesToAdd = [...this.localEditedYard.imagesUrl]
+      } else {
+        this.localEditedYard.id = await this.createYardId()
       }
-      else{
-        this.localEditedYard.id=await this.createYardId()
-      }
-    },
+    }
+  },
   created() {
     this.init_page()
   },
@@ -253,6 +248,7 @@ h1 {
   justify-content: center;
   align-content: center;
   align-items: center;
+
   border-radius: 15px 15px 15px 15px;
 }
 
@@ -375,146 +371,3 @@ h1 {
 
 
 </style>
-
-
-
-
-
-
-
-
-
-
-<!--<template>-->
-
-<!--  <div class="container">-->
-<!--    <h1>הוסף את החצר שלך</h1>-->
-<!--    <div class="q-gutter-md" style="max-width: 400px">-->
-
-<!--      <div>-->
-<!--        <input name="yardName" v-model="localNewYard.yardName" type="text" class="fieldInput" placeholder="שם החצר" />-->
-<!--        <input name="location" v-model="localNewYard.location" type="text" class="fieldInput" placeholder="מיקום" />-->
-
-<!--        <div class="rangeField">כמות סועדים-->
-<!--          <q-input borderless-->
-<!--                   name="quantity" type="range"-->
-<!--                   v-model="localNewYard.peopleRange"-->
-<!--                   min="2" max="100"-->
-<!--                   placeholder="כמות המשתתפים האפשרית" >-->
-<!--            <q-badge floating color="red">{{localNewYard.peopleRange}}</q-badge>-->
-<!--          </q-input>-->
-<!--        </div>-->
-
-<!--        <div class="space" >-->
-
-<!--          <q-select-->
-<!--            class="rangeField "-->
-<!--            emit-value-->
-<!--            multiple-->
-<!--            map-options-->
-<!--            v-model="localNewYard.foodCategory"-->
-<!--            :options="options"-->
-<!--            use-chips-->
-<!--            stack-label-->
-<!--            label="קטגוריות אוכל"-->
-<!--            rounded-->
-<!--            borderless-->
-<!--          >-->
-<!--            <template v-slot:selected-item="scope">-->
-<!--              <q-chip-->
-<!--                removable-->
-<!--                dense-->
-<!--                @remove="scope.removeAtIndex(scope.index)"-->
-<!--                :tabindex="scope.tabindex"-->
-<!--                color="white"-->
-<!--                text-color="secondary"-->
-<!--                class="q-ma-none"-->
-<!--              >-->
-<!--                <q-avatar color="secondary" text-color="white" />-->
-<!--                {{ scope.opt.label }}-->
-<!--              </q-chip>-->
-<!--            </template>-->
-<!--          </q-select>-->
-<!--        </div>-->
-
-<!--        <q-file borderless clearable multiple class="rangeField" v-model="images" label="תמונות של המקום" >-->
-<!--          <template v-slot:prepend>-->
-<!--            <q-icon name="cloud_upload" />-->
-<!--          </template>-->
-<!--        </q-file>-->
-
-<!--        <input name="price" v-model="localNewYard.pricePerHead" type="number" placeholder="מחיר פר סועד" class="fieldInput"/>-->
-<!--        <textarea v-model="localNewYard.placeDesc" class="fieldInput" placeholder="פרטים על המקום"></textarea>-->
-
-
-<!--        <button class="btn" @click="addYard">הוסף</button>-->
-<!--      </div>-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--</template>-->
-
-<!--<script>-->
-<!-- import {mapState,mapActions,mapMutations} from "vuex";-->
-
-<!--export default {-->
-
-<!--  name: "addYardForm",-->
-<!--  computed:{-->
-<!--    // ...mapState('yards', ['editYard']),-->
-<!--    // ...mapState('users', ['loginUser']),-->
-<!--  },-->
-<!--  data() {-->
-<!--    return {-->
-<!--      localNewYard: {-->
-<!--        yardName:'',-->
-<!--        peopleRange:'',-->
-<!--        location:'',-->
-<!--        pricePerHead:'',-->
-<!--        foodCategory:[],-->
-<!--        placeDesc:''-->
-<!--      },-->
-<!--      images: [],-->
-
-<!--      options: [-->
-<!--        {-->
-<!--          label: 'גריל',-->
-<!--          value: 'gril',-->
-<!--          icon: 'fas fa-hamburger'-->
-<!--        },-->
-<!--        {-->
-<!--          label: 'איטלקי',-->
-<!--          value: 'italian',-->
-<!--          icon: 'fas fa-pizza-slice'-->
-<!--        },-->
-<!--        {-->
-<!--          label: 'ים תיכוני',-->
-<!--          value: 'Mediterranean',-->
-<!--          icon: 'map'-->
-<!--        },-->
-<!--        {-->
-<!--          label: 'דגים',-->
-<!--          value: 'fish',-->
-<!--          icon: 'fas fa-fish'-->
-<!--        }],-->
-<!--    }-->
-<!--  },-->
-<!--  methods : {-->
-<!--     ...mapActions('yards', ["insertYard"]),-->
-
-<!--    async addYard() {-->
-<!--      //send to action obj with all local data & img-->
-<!--      const images = this.images-->
-<!--      console.log('images',images)-->
-<!--       this.insertYard({data : this.localNewYard, images})-->
-<!--       console.log('this.localNewYard',this.localNewYard)-->
-<!--       this.images = []-->
-
-<!--    },-->
-
-<!--  }-->
-<!--}-->
-<!--</script>-->
-
-<!--<style scoped>-->
-<!--</style>-->
