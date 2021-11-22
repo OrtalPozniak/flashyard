@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" >
     <q-header style="background: linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);">
       <q-toolbar>
         <q-btn
@@ -12,10 +12,10 @@
         />
 
         <q-toolbar-title class="flash-title">
-          FlashYard
+<!--          FlashYard-->
         </q-toolbar-title>
 
-        <div> FlashYard logo ?</div>
+        <div style="width: 100px;"><img :src="require('../assets/flashW.png')" width="100px" alt="flash"/></div>
         <q-btn v-if="$route.fullPath.includes('/sumOrder')"
                v-go-back.single
                label="Back"
@@ -29,9 +29,10 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      class="bg-grey-1"
+      class="bg-grey-1 drawerBG"
+
     >
-      <q-list >
+      <q-list>
         <q-item-label
           header
           class="text-grey-8"
@@ -72,8 +73,9 @@
 </template>
 
 <script>
-import { mapActions, mapState,mapMutations } from "vuex";
+import { mapActions, mapState } from "vuex";
 import FS from "src/middleware/firestore";
+
 
 
 export default {
@@ -148,8 +150,9 @@ export default {
     async forceRerender(){
      this.refreshKey++;
       await this.whichMenu()
+      debugger;
+      console.log("i got to the force update")
       this.$forceUpdate()
-
     },
     goToAgreaments(){
       this.$router.push('/addChef')
@@ -180,7 +183,6 @@ export default {
         this.filteredlinks = this.UserLinksList.filter(item => item.title !=='הוסף חצר' && item.title !== 'החצר שלי')
       }
       await this.setEditedUser({myData})
-
     }
   },
   created() {
@@ -193,4 +195,8 @@ export default {
 .flash-title{
 text-align: center;
 }
+.drawerBG{
+  background: #FFFAF0;
+}
+
 </style>

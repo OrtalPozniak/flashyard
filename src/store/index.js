@@ -4,6 +4,7 @@ import users from './users'
 import yards from './yards'
 import payment from './payment'
 import order from './order'
+import test from './test'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ export default function (/* { ssrContext } */) {
       users,
       yards,
       payment,
-      order
+      order,
+      test
     },
     plugins: [
     ],

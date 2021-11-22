@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <q-expansion-item expand-separator v-model="expanded" label="ימים קבועים שבהם אני לא עובד">
+  <div class="profileChanger centerBoxPos">
+    <q-expansion-item style="font-family: Charter;color: #c01039;font-weight: 900;" expand-separator v-model="expanded" label="ימים קבועים שבהם אני לא עובד">
       <div class="q-gutter-sm">
         <q-checkbox size="1.5rem" v-for="day in days" v-model="nonWorkDays" :val="day.num" :label="day.string"
-                    color="teal"/>
+                    color="negative"/>
       </div>
     </q-expansion-item>
     <DatePicker
+      class="calendar myColor"
       locale="he"
       :min-date='new Date()'
       :model-config="{type: 'string', mask: 'YYYY/MM/DD'}"
       :value="null"
-      color="red"
-      is-dark
+      color="#FFFAF0"
       v-model="day"
+      is-dark
+      style="font-family: 'Rubik', sans-serif"
       @dayclick="dialog=true"
       :attributes='attributes'
     />
@@ -22,8 +24,8 @@
                  @closeDialog="falseDialog"></component>
     </q-dialog>
     <div>
-      <q-btn color="primary" label="צא ללא שמירה" @click="exitUnsaved()"/>
-      <q-btn color="primary" label="שמור  שינויים" @click="saveChanges()"/>
+      <q-btn  class="myColor shadowBtn" style="margin-left: 0.25em;border: 1px solid #e02a19" label="שמור  שינויים" @click="saveChanges()"/>
+      <q-btn class="transparentColor coverBtn shadowBtn" style="margin-right: 0.25em" label="צא ללא שמירה" @click="exitUnsaved()"/>
     </div>
   </div>
 </template>
@@ -71,8 +73,8 @@ export default {
     },
     attributes() {
       return [
-        ...this.disableDays.map(disableDay => ({dates: [disableDay.date], bar: 'red'})),
-        ...this.orderedEvents.map(orderedEvent => ({dates: [orderedEvent.date], bar: 'yellow'})),
+        ...this.disableDays.map(disableDay => ({ dates: [disableDay.date], bar: 'gray'})),
+        ...this.orderedEvents.map(orderedEvent => ({dates: [orderedEvent.date], bar: 'orange'})),
         {dates: this.disableWeekdays, bar: 'blue'},
       ];
     }
@@ -136,5 +138,20 @@ export default {
 
 <style scoped>
 
+.profileChanger{
+  box-shadow: 0 4px 15px 0 rgba(137,133,132,0.75);
+  padding: 5vw;
+  border-radius: 3%;
+  position:relative;
+  align-content: center;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10vw;
+  /*min-height: 500px;*/
+}
+.calendar{
+  margin: 2vw;
+}
 
 </style>

@@ -22,4 +22,15 @@ export default {
   insertUser: ((state, userObj) => {
     return state.users.push(userObj)
   }),
+
+  pushPhoto: ((state,val)=>{
+    state.newUser.imgUrl = val
+  }),
+
+  updatePro: ((state, obj)=>{
+    debugger
+    state.newUser.imgUrl = obj.imageUrl
+    state.newUser.firstName = obj.firstName
+    state.newUser.lastName = obj.lastName
+  })
 }

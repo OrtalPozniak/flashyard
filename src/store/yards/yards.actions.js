@@ -6,10 +6,10 @@ export default {
   /***********************readYards****************
    *      get all yards from Firebase             *
    ***********************************************/
-  readYards: async ({commit}) => {
-    const yards = await FS_Yards.getYards()
-    commit('setYards', yards)
-  },
+  readYards: async({commit})=>{
+    const yards=await FS_Yards.getYards()
+    commit('setYards',yards)
+},
 
   createYardId: async ()=>{
     return FS_Yards.createYardId()

@@ -1,11 +1,11 @@
+
 import FS from '../../middleware/firestore'
-import firebase from "firebase";
 import auth from "../../middleware/firestore/auth"
 import fbi from "../../middleware/firebase";
 import {error} from "vue-infinite-loading/src/utils";
-import {route} from "quasar/wrappers";
-import routes from "src/router/routes";
-import FS_Yards from "src/middleware/firestore/yards";
+import firebase from "firebase/app";
+import 'firebase/storage';
+
 
 export default {
 
@@ -42,7 +42,7 @@ export default {
         await localStorage.setItem("isAChef", "false")
         commit('setEditedUser', userData)
       }
-    } catch (e) {
+    }catch(e){
       return e.message
     }
   },
@@ -122,8 +122,17 @@ export default {
     }
     commit('setEditedUser', user)
     commit('insertUser', user)
-    // commit('setEditedYardId',id)
-    // commit('setEditedYard',yard)
 
   },
+  createProfile:async ({commit,state},imageData)=> {
+    let url = imageData
+    await FS.users.uploadProfilePic(url)
+    await commit('pushPhoto',url)
+  },
+
+  updateProfile: async ({commit,state}, obj)=>{
+    commit('updatePro', obj)
+  }
+
+
 }

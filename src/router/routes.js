@@ -18,6 +18,10 @@ const routes = [
     path: '/login',
     component: () => import('pages/Login')
   },
+  // {
+  //   path: '/calendar',
+  //   component: () => import('components/MyProfile/Calendar')
+  // },
   {
     path: '/reset',
     component: () => import('pages/ResetPassword')

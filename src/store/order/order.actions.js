@@ -68,7 +68,9 @@ export default {
     }
 
     //check numPeopleOrder
+    debugger;
     const yard = await FS.yards.getYardById(state.orderDetails.uidYard)
+
     const peopleRange = yard.peopleRange
     console.log(peopleRange, 'peopleRange')
     if (state.orderDetails.numOfPeople > peopleRange.max || state.orderDetails.numOfPeople < peopleRange.min || !state.orderDetails.numOfPeople) {

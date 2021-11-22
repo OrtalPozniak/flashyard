@@ -14,8 +14,10 @@ html, body {
   justify-content: center;
   /*put the children elements in the vertical center of the screen*/
   align-items: center;
-  background: #F8F8FF;
   height: 100vh;
+}
+.pageBG{
+  background: #F8F8FF;
 }
 .centerBoxPos{
   position: relative;
@@ -38,3 +40,24 @@ html, body {
   display: inline-grid;
 }
 
+.avatarProfile{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.avatarProfile:hover img {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.avatarProfile span:hover img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.fieldInput {
+  margin: 20px 0;
+  padding: 15px 15px;
+  border-radius: 15px;
+  border: none;
+  background: #F6F7F9;
+}

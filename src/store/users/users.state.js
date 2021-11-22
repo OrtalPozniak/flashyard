@@ -6,7 +6,8 @@ export default {
         firstName:'',
         lastName:'',
         email: '',
-        isAChef: false
+        isAChef: false,
+        imgUrl:''
     },
     loginUser : {},
 

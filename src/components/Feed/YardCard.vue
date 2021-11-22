@@ -6,6 +6,8 @@
       <div class="card"  >
         <div class="card-headers">
           <h4 class="card-title">{{ yard.yardName }}</h4>
+        </div>
+        <div class="card-headers">
           <h4 class="card-category">קטגוריה:
             <span   v-for="(category,index) of yard.foodCategory"> {{ category }}
               <span v-if="yard.foodCategory.length>1 && index!==yard.foodCategory.length-1">,</span>
@@ -94,14 +96,14 @@ export default {
   box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
   width: 100%;
   height: 100%;
-  margin-top: 30px;
+  margin-top: 3vw;
+  padding-bottom: 3vw;
   border-radius: 40px;
   transition: all 500ms;
   overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
 
@@ -109,7 +111,7 @@ export default {
   text-align: left;
   display: flex;
   justify-content: center;
-  padding:20px;
+  margin-top:1vw;
 
 }
 
@@ -133,18 +135,23 @@ export default {
 }
 
 .card-title {
-  padding-top: 10px;
+  margin: 2vw;
+  font-family: Rubik;
   font-weight: bold;
-  font-size: 35px;
+  font-size: x-large;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
   color: #1D1D1D;
+  height: 2vw;
 }
 
 .card-category {
-  font-size: 20px;
+  font-size: medium;
   text-align: center;
   color: black;
+  margin: 1vw;
+  height: 2vw;
+
 }
 
 
@@ -155,10 +162,12 @@ export default {
 
 .card-btn {
   font-size: 20px;
+  font-family: Rubik;
   background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
   color: white;
   border: none;
   padding: 10px 12px;
+  margin-top: 2vw;
   margin-bottom: 15px;
   border-radius: 4px;
   cursor: pointer;

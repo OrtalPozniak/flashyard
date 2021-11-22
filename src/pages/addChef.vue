@@ -1,5 +1,5 @@
 <template>
-  <div class="page" style="flex-direction: column">
+  <div class="page pageBG" style="flex-direction: column">
     <div class="centerBoxPos">
       <p class="hafirot text-center">פה יהיו מלא חפירות ונשאל אם אתם מסכימים לתנאי השימוש ולהירשם לכאן כשפים,<br>
       כמובן שנבטיח לכם שלא נעשה שימוש לרעה בפרטים שלכם וזה יהיה שקר גס כי נמכור את זה לכל דורש</p>

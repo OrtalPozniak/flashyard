@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Karantina&family=Rubik:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karantina&family=Rubik:ital,wght@1,900&display=swap,Rubik:wght@300&display=swap');
 
 .btnAction{
   background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
@@ -6,8 +6,8 @@
 }
 
 .btn-circSquare {
-  width: 200px;
-  font-size: 16px;
+  width: 180px;
+  font-size: 14px;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
@@ -40,7 +40,10 @@
   background: linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
   box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
 }
-
+.myColor{
+  background: linear-gradient(to top,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
+  color: white;
+}
 .btnSquare {
   font-size: 20px;
   /*background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);*/
@@ -54,13 +57,23 @@
 
 .oppositeColor{
   color: #c01039;
-  border: 1px solid #c01039;
+  border-top: 3px solid #c01039;
+  border-right: 3px solid #dc1223;
+  border-bottom: 3px solid #de1e1e;
+  border-left: 3px solid #e02a19;
+  border-image-source: linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
   /*box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);*/
 }
-
-myColor{
-  box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
-  background: linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19) !important;
+.transparentColor{
+  color: #c01039;
+  border: 1px solid #e02a19;
+}
+.myColor{
+  /*box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);*/
+  background: linear-gradient(to bottom,#c01039,#dc1223 37%,#de1e1e 75%,#e02a19) !important;
+}
+.shadowBtn{
+  box-shadow: 0 1px 3px 0 rgba(229, 66, 10, 0.75);
 }
 .btnSize{
   height: 3vw;

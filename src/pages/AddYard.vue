@@ -1,6 +1,6 @@
 <template>
   <addYardForm>
-      <router-view  @xx=""></router-view>
+      <router-view @xx=""></router-view>
   </addYardForm>
 </template>
 

@@ -8,13 +8,22 @@
   }
 }
 @media (max-width: 767px) {
+  .formInput{
+    width:70% !important;
+  }
+.txt{
+  margin-top: 5vw !important;
+  margin-bottom: 10vw !important;
+}
+.calendar{
+  margin: 10vw !important;
+}
   .seperator{
     display: none;
     visibility: hidden;
   }
   .centerBoxPos{
     height: 100%;
-
     width: 100%;
   }
   .boxWidth{
@@ -24,12 +33,18 @@
    flex-direction: column !important;
     display: block !important;
   }
+  .card-category{
+    margin-top: 25vw !important;
+  }
   .containerCarousel{
     width: 70vw !important;
   }
   .btn-circSquare{
     height: 30px;
     width: 100px;
+  }
+  .btnSize.btn-circSquare.myColor{
+    margin-bottom: 4% !important;
   }
   .btn-circSquare.myColor{
     margin-bottom: 15%;
@@ -77,5 +92,10 @@
   .cancelBtn{
     margin-left: 0px !important;
   }
+  .meetTeam {
+   flex-direction: column;
+
+  }
+
 }
 
