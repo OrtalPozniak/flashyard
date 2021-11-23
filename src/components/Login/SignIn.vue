@@ -51,7 +51,7 @@
           <!--          <q-toggle v-model="accept" label="אני מסכים לתנאי השימוש"/>-->
 
           <div align="center">
-            <q-btn @click="signInWithEmailAndPassword(Email,Password)" label="התחבר/י" type="submit" class="text-white"
+            <q-btn @click="signInWithEmailAndPassword(Email,Password,imgUrl)" label="התחבר/י" type="submit" class="text-white"
                    style="background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
 "/>
           </div>

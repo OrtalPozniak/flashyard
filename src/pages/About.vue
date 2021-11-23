@@ -5,7 +5,7 @@
       <div class= "aboutSectionTop ">
       </div>
       <div class="aboutSectionMid " >
-        <h5 class="text-center" style="color: #FFFAF0;font-family: Rubik;">קצת עלינו</h5>
+        <h5 class="text-center headline" style="color: #FFFAF0;font-family: Rubik;">קצת עלינו</h5>
         <p class="blockText text-center">
           גרים בבית פרטי עם שטח לא מנוצל? מחפשים חצר נחמדה וגדולה לאירוע חברתי כלשהו?<br>
           כאן ב-FlashYard אנו דואגים לקשר ביניכם בקליק.<br>
@@ -18,7 +18,7 @@
         </p>
       </div>
       <div class="aboutSectionDown">
-        <h5 class="text-center"  style="color: #683a5d;font-family: Rubik;">הצוות שלנו</h5>
+        <h5 class="text-center headline" style="color: #683a5d;font-family: Rubik;">הצוות שלנו</h5>
 
         <div class="meetTeam">
           <li>
@@ -103,7 +103,7 @@ export default {
 *{;
   padding: 0;
   margin: 0;
-  overflow-x: hidden;
+  /*overflow-x: hidden;*/
 }
 .aboutSectionTop{
   background: linear-gradient(to left,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);

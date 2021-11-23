@@ -29,6 +29,7 @@ export default {
 
   updatePro: ((state, obj)=>{
     debugger
+    console.log(obj.imageUrl)
     state.newUser.imgUrl = obj.imageUrl
     state.newUser.firstName = obj.firstName
     state.newUser.lastName = obj.lastName

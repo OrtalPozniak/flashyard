@@ -30,7 +30,6 @@
       show-if-above
       bordered
       class="bg-grey-1 drawerBG"
-
     >
       <q-list>
         <q-item-label

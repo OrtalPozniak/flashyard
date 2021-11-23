@@ -74,7 +74,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 490px) {
   .topSpaceForm{
     margin-top: 10vh;
   }
@@ -94,6 +94,15 @@
   }
   .meetTeam {
    flex-direction: column;
+  }
+  .aboutSectionMid{
+    height: 90% !important;
+  }
+  .headline{
+    font-size: small !important;
+  }
+  p.blockText{
+    font-size: smaller !important;
 
   }
 

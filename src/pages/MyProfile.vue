@@ -53,8 +53,7 @@ export default {
       compToShow:'',
       showComp:false,
       numOfCircles: 3,
-      imageUrl:'',
-      // imageUrlToShow:''
+      imageUrl:''
     };
   },
   computed:{
@@ -122,7 +121,6 @@ export default {
       }
     },
     initProfile:async function (){
-      debugger
       const idU = localStorage.getItem('uid')
       console.log(idU)
       let profileData = await FS.users.getUserById(idU)

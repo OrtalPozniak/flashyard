@@ -9,7 +9,7 @@
   width: 180px;
   font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: #FFFAF0;
   cursor: pointer;
   margin: 20px;
   height: 55px;
@@ -42,11 +42,11 @@
 }
 .myColor{
   background: linear-gradient(to top,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
-  color: white;
+  color: #FFFAF0;
 }
 .btnSquare {
   font-size: 20px;
-  color: white;
+  color: #FFFAF0;
   border: none;
   padding: 0px 12px;
   margin-bottom: 15px;

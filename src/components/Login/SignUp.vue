@@ -70,7 +70,7 @@
           </div>
 
           <q-card-actions align="center">
-            <q-btn @click="createUserWithEmailAndPassword(email,password,firstName,lastName,isAChef)" class="text-white btnAction" label="הירשם"/>
+            <q-btn @click="createUserWithEmailAndPassword(email,password,firstName,lastName,imgUrl,isAChef)" class="text-white btnAction" label="הירשם"/>
           </q-card-actions>
 
         </q-form>
@@ -102,8 +102,8 @@ export default {
     ...mapActions('users',['createUserWithEmail','setUserDataToLocal']),
     ...mapMutations('users',['changeSignUp']),
 
-    async createUserWithEmailAndPassword(email, password, firstName, lastName,isAChef) {
-      await this.createUserWithEmail({email, password, firstName, lastName,isAChef})
+    async createUserWithEmailAndPassword(email, password, firstName, lastName,imgUrl,isAChef) {
+      await this.createUserWithEmail({email, password, firstName, lastName,imgUrl,isAChef})
       await this.setUserDataToLocal()
       await this.$router.push('/feed')
     },

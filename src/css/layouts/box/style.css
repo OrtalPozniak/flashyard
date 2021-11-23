@@ -61,3 +61,17 @@ html, body {
   border: none;
   background: #F6F7F9;
 }
+
+.profileChanger{
+  border: 1px solid lightgray;
+  box-shadow: 0 4px 15px 0 rgba(137,133,132,0.75);
+  padding: 5vw;
+  border-radius: 3%;
+  position:relative;
+  align-content: center;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-bottom: 10vw;
+}

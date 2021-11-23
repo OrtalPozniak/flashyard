@@ -1,17 +1,16 @@
 <template class="page">
   <div class="profileChanger centerBoxPos text-center">
     <div style="display:flex;flex-direction: column;"  class="text-center">
-      <!--    <form @submit.prevent="onUpdateProfile" style="display:flex;flex-direction: column" >-->
       <label class="lbl" >ערוך פרופיל</label>
       <div class="text-center">
         <img :src="imageUrl" height="150" width="150" style="border-radius: 50%;">
       </div>
       <div class="centerWidth text-center">
         <div class="text-center" >
-          <input type="text" v-model="fname" class="text-center formInput" alt="first name" :placeholder="newUser.firstName">
+          <input type="text" v-model="fname" class="text-center fieldInput" alt="first name" :placeholder="newUser.firstName">
         </div>
         <div class="text-center">
-          <input type="text" v-model="lname" class="text-center formInput" alt="last name" :placeholder="newUser.lastName">
+          <input type="text" v-model="lname" class="text-center fieldInput" alt="last name" :placeholder="newUser.lastName">
         </div>
       </div>
       <div class="text-center centerWidth">
@@ -126,34 +125,9 @@ export default {
 .coverBtn{
   background: none !important;
 }
-.profileChanger{
-  border: 1px solid lightgray;
-  box-shadow: 0 4px 15px 0 rgba(137,133,132,0.75);
-  padding: 5vw;
-  border-radius: 3%;
-  position:relative;
-  align-content: center;
-  display:inline-flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin-bottom: 10vw;
-  /*min-height: 500px;*/
-}
+
 .coverBtn:hover{
   opacity: 0.8;
-  /*background-position: 100% 0;*/
-}
-.formInput{
-  /*box-shadow: 0 4px 15px 0 rgba(137,133,132,0.75);*/
-  height:2rem;
-  border: 0.3px solid rgba(236, 232, 231, 0.75);
-  background: rgba(236, 232, 231, 0.75);
-  border-radius: 10px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width:100%;
-  font-family: 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 .centerWidth{
   width: 400px;
