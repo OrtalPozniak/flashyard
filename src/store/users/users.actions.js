@@ -99,6 +99,7 @@ export default {
     }
   },
   getIdYardByIdChef: async ({}, idChef) => {
+    debugger
     const chef = await FS.users.getUserById(idChef)
     return chef.yardId
   },

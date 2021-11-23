@@ -1,27 +1,31 @@
 <template>
-  <div class="page YardBG" >
+  <div class="page YardBG">
     <div class="q-pa-md">
-      <h3 class="text-center myTxt" style="margin-bottom:-5px;">{{editedYard.yardName}}</h3><br>
-      <h5 class="text-center myTxt">{{editedYard.placeDesc}}</h5>
+      <h3 class="text-center myTxt" style="margin-bottom:-5px;">{{ editedYard.yardName }}</h3><br>
+      <h5 class="text-center myTxt">{{ editedYard.placeDesc }}</h5>
       <div class="yardContainer">
-        <div class=" desc" >
+        <div class=" desc">
           <p>
             המטבח שלנו מציע אוכל:<br>
-            <span v-for="(meal,index) of editedYard.foodCategory" :name="++index" :src="editedYard.foodCategory[index-1]"> {{meal}}
+            <span v-for="(meal,index) of editedYard.foodCategory" :name="++index"
+                  :src="editedYard.foodCategory[index-1]"> {{ meal }}
           <span v-if="editedYard.foodCategory.length>1 && index!==editedYard.foodCategory.length">,</span>
         </span>
           </p>
           <p>
             המחיר פר סועד הוא:
-            <span class="text-center desc"><i class="fas fa-shekel-sign icon q-icon notranslate"></i> {{editedYard.pricePerHead}}</span>
+            <span class="text-center desc"><i
+              class="fas fa-shekel-sign icon q-icon notranslate"></i> {{ editedYard.pricePerHead }}</span>
           </p>
           <p>
             מיקום:
-            <span class="text-center desc"><i class='fas fa-map-marker-alt' style='font-size:1rem;color:red;'></i> {{editedYard.location}} </span>
+            <span class="text-center desc"><i class='fas fa-map-marker-alt'
+                                              style='font-size:1rem;color:red;'></i> {{ editedYard.location }} </span>
           </p>
           <p>
             טווח מוזמנים:
-            <span class="text-center desc"> <i class="fas fa-user-alt icon  q-icon notranslate"></i> {{editedYard.peopleRange.max}} - {{editedYard.peopleRange.min}} </span>
+            <span class="text-center desc"> <i
+              class="fas fa-user-alt icon  q-icon notranslate"></i> {{ editedYard.peopleRange.max }} - {{ editedYard.peopleRange.min }} </span>
           </p>
           <transition
             appear
@@ -47,15 +51,16 @@
               @mouseenter="autoplay = false"
               @mouseleave="autoplay = true"
             >
-              <q-carousel-slide style="border-radius: 5px;" v-for="(pic, index) of editedYard.imagesUrl " :img-src="editedYard.imagesUrl[currentIndex-1]" :name="++index"/>
+              <q-carousel-slide style="border-radius: 5px;" v-for="(pic, index) of editedYard.imagesUrl "
+                                :img-src="editedYard.imagesUrl[currentIndex-1]" :name="++index"/>
             </q-carousel>
           </div>
-          <div class="smallPrevDiv" >
-            <ul  v-for="(pic, index) of editedYard.imagesUrl"  :img-src="editedYard.imagesUrl[index-1]"
-                 :name="++index"
-                 class="showPreview" v-on:click="onThumbClick(index)">
+          <div class="smallPrevDiv">
+            <ul v-for="(pic, index) of editedYard.imagesUrl" :img-src="editedYard.imagesUrl[index-1]"
+                :name="++index"
+                class="showPreview" v-on:click="onThumbClick(index)">
               <li style="width: 100%;height: 100%">
-                <figure class="galleryImg" >
+                <figure class="galleryImg">
                   <img :src="pic" alt="blablabla" style="width: 100%">
                 </figure>
               </li>
@@ -68,58 +73,61 @@
 </template>
 
 <script>
-import {mapState,mapActions,mapMutations} from 'vuex'
+import {mapState, mapActions, mapMutations} from 'vuex'
 
 export default {
   name: "YardPage",
-  data(){
-    return{
+  data() {
+    return {
       autoplay: true,
-      currentIndex : 1
+      currentIndex: 1
     }
   },
-  computed:{
-    ...mapState('yards',['yards','editedYard','editedYardId'])
+  computed: {
+    ...mapState('yards', ['yards', 'editedYard', 'editedYardId'])
 
   },
-  methods:{
-    ...mapActions('yards',['setEditedYardById']),
-    ...mapMutations('yards',['setEditedYardId']),
-    nav(){
+  methods: {
+    ...mapActions('yards', ['setEditedYardById']),
+    ...mapMutations('yards', ['setEditedYardId']),
+    nav() {
       this.$router.push('/order')
     },
-    onThumbClick (_index) {
+    onThumbClick(_index) {
       this.currentIndex = _index;
     },
   },
   created() {
-    debugger
-    if (!this.editedYardId){
+    if (!this.editedYardId) {
       this.setEditedYardId(this.$route.params.id)
     }
   }
 }
 </script>
 
-<style >
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Palanquin+Dark&display=swap');
 
-.containerCarousel{
+.containerCarousel {
   width: 30vw;
   position: relative;
 }
-.myTxt{
+
+.myTxt {
   font-family: 'Rubik', sans-serif;
 }
-.desc{
+
+.desc {
   font-size: 20px;
   display: table;
   align-items: center;
   direction: ltr;
 }
-.YardBG{
-  background: #d9c8b3;
+
+.YardBG {
+  background: #FFFAF0;
 }
+
 .showPreview {
   flex-wrap: wrap;
   flex: 1 1 25%;
@@ -134,24 +142,28 @@ export default {
   /*puts the pictures in the middle*/
   float: left;
 }
-.smallPrevDiv{
-  display:flex;
+
+.smallPrevDiv {
+  display: flex;
   justify-content: space-between;
   width: 100%;
   overflow-x: scroll;
 }
+
 .galleryImg img:hover {
   opacity: 1;
-  transform: scale(1.03);}
+  transform: scale(1.03);
+}
 
 .galleryImg img {
   opacity: 0.7;
   width: 100%;
   height: 100%;
   transform: scale(1.15);
-  transition: transform 0.5s, opacity 0.5s;}
+  transition: transform 0.5s, opacity 0.5s;
+}
 
-.yardContainer{
+.yardContainer {
   width: 80vw;
   position: relative;
   flex-direction: row !important;

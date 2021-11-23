@@ -44,12 +44,12 @@ export default {
   },
   computed: {
     ...mapState('users',['users','newUser']),
-    ...mapMutations('users',['pushPhoto']),
     formIsValid() {
       return this.imageUrl !== ""
     }
   },
   methods: {
+    ...mapMutations('users',['pushPhoto']),
     ...mapActions('users',['createProfile','updateProfile']),
 
     previewImage(event){
@@ -65,6 +65,7 @@ export default {
 
     },
     async onUpload(){
+
       this.imageUrl = '';
       const storageRef = await firebase.storage().ref()
       const idUser = window.user.uid
@@ -73,7 +74,7 @@ export default {
         "lastName": this.lname
       });
       if (this.imageData!==null){
-        const uploadTask = storageRef.child(`profileUsers/${idUser}/${this.imageData.name}`).put(this.imageData);
+        const uploadTask =  storageRef.child(`profileUsers/${idUser}/${this.imageData.name}`).put(this.imageData);
         uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,(snapshot)=>{
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log('Upload is ' + progress + '% done');
@@ -103,6 +104,8 @@ export default {
       }
       else this.imageUrl = this.newUser.imgUrl
       await this.updateProfile({firstName:this.fname,lastName:this.lname,imageUrl:this.imageUrl})
+      console.log(this.newUser.imgUrl)
+
     },
     onPickFile(){
       //responsible for the reference between the button and the input

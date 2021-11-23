@@ -96,7 +96,6 @@ export default {
         notes: [],
         numOfPeople: 0,
         date: this.dateToString(new Date())
-        // date: new Date().toLocaleString('he-IL', {dateStyle: 'short'}),
       },
       noteText: ''
     }
@@ -105,6 +104,9 @@ export default {
     ...mapState("test", ['disableWeekdays', 'disableDays', 'orderedEvents']),
     ...mapState('yards', ['yards', 'editedYard', 'editedYardId']),
 
+    dateToShortString() {
+      return this.localOrder.date.toLocaleString('he-IL', {dateStyle: 'short'})
+    },
     AllDisableDays() {
       return [
         ...this.disableDays.map(disableDay => (disableDay.date)),
@@ -113,17 +115,12 @@ export default {
     },
   },
   methods: {
-    ...mapActions("test", ["setDisableWeekdays", 'setDisableWeekdaysChefInBD', 'getDisableWeekdaysChefFromBD', 'setDisableDaysChefInBD', 'getDisableDaysChefFromBD','getYardOrdersFromBD']),
+    ...mapActions("test", ["setDisableWeekdays", 'setDisableWeekdaysChefInBD', 'getDisableWeekdaysChefFromBD', 'setDisableDaysChefInBD',
+      'getDisableDaysChefFromBD', 'getYardOrdersFromBD', 'snapDisableWeekdaysChef', 'snapDisableDaysChefFromDB', 'snapYardOrdersFromBD']),
     ...mapActions('order', ['createOrder', 'CheckingOrderWithDB', "createOrderInDB"]),
     addNote() {
       this.localOrder.notes.push(this.noteText)
       this.noteText = ''
-    },
-    dateToString(date) {
-      const YYYY = date.getFullYear()
-      const MM = ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1)))
-      const DD = ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()))
-      return YYYY + '/' + MM + '/' + DD
     },
     //createAllDisableDays() {
     //this.allDisableDays = this.disableWeekdays.concat(this.disableDays, this.orderedEvents)
@@ -142,17 +139,21 @@ export default {
       } else {
         window.alert('פרטי הזמנה אינם תקינים, יש לבדוק האם התאריך פנוי או כמות המוזמנים תקינה')
       }
-
+    },
+    dateToString(date) {
+      const YYYY = date.getFullYear()
+      const MM = ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1)))
+      const DD = ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()))
+      return YYYY + '/' + MM + '/' + DD
     },
 
   },
   async created() {
     // console.log(this.editedYard)
     this.updateMinPeopleInCreate()
-    await this.getDisableWeekdaysChefFromBD( this.editedYard.uidChef)
-    await this.getDisableDaysChefFromBD( this.editedYard.uidChef)
-    await this.getYardOrdersFromBD( this.editedYardId)
-
+    await this.snapDisableWeekdaysChef(this.editedYard.uidChef)
+    await this.snapDisableDaysChefFromDB(this.editedYard.uidChef)
+    await this.snapYardOrdersFromBD(this.editedYardId)
   }
 }
 </script>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Karantina&family=Rubik:ital,wght@1,900&display=swap,Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karantina&family=Rubik:ital,wght@1,900&display=swap');
 
 .btnAction{
   background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
@@ -46,7 +46,6 @@
 }
 .btnSquare {
   font-size: 20px;
-  /*background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);*/
   color: white;
   border: none;
   padding: 0px 12px;

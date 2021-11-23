@@ -44,7 +44,7 @@ export default {
     console.log(orderDate, 'orderDate')
     const disableDaysChef = await FS.users.getDisableDaysChef(state.orderDetails.uidChef)
     console.log(disableDaysChef, 'disableDaysChef')
-    if (disableDaysChef.disableDays.length && disableDaysChef.disableDays.find(day =>
+    if (disableDaysChef.length && disableDaysChef.find(day =>
       day.date === orderDate)) {
       // אם התנאי נכון תאריך ההזמנה קיים בדטה בייס כלומר השף לא יכול לעבוד בתאריך זה
       console.log('false', 'check dateOrder')

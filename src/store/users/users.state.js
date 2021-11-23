@@ -11,12 +11,6 @@ export default {
     },
     loginUser : {},
 
-  //הוספות שלי
-  disableDays:[],
-  disableWeekdays:{
-    weekdays:[],
-  },
-
 
 
 }

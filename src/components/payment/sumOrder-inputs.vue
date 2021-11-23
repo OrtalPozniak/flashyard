@@ -1,12 +1,10 @@
 <template>
-  <q-page-container>
-
     <div class="payInputs">
       <div class="h1">
         <h1> סיכום עסקה</h1>
       </div>
       <div class="q-pa-md row flex items-baseline">
-        <P>תאריך האירוע : </P>
+        <P>תאריך האירוע :&nbsp </P>
         <q-field :dense="true" outlined>
           <template v-slot:control>
             <div class="self-center full-width no-outline" tabindex="0">
@@ -17,7 +15,7 @@
         </q-field>
       </div>
       <div class="q-pa-md row flex items-baseline">
-        <P>כמות משתתפים : </P>
+        <P>כמות משתתפים :&nbsp </P>
         <q-field :dense="true" outlined>
           <template v-slot:control>
             <div class="self-center full-width no-outline" tabindex="0">{{ orderDetails.numOfPeople }}</div>
@@ -25,7 +23,7 @@
         </q-field>
       </div>
       <div class="q-pa-md row flex items-baseline">
-        <P>עלות משתתף : </P>
+        <P>עלות משתתף :&nbsp </P>
         <q-field :dense="true" outlined suffix="₪">
           <template v-slot:control>
             <div class="self-center full-width no-outline" tabindex="0">{{ orderDetails.pricePerHead }}</div>
@@ -33,7 +31,7 @@
         </q-field>
       </div>
       <div class="q-pa-md row flex items-baseline">
-        <P>עלות כוללת : </P>
+        <P>עלות כוללת :&nbsp </P>
         <q-field :dense="true" outlined suffix="₪">
           <template v-slot:control>
             <div class="self-center full-width no-outline" tabindex="0">
@@ -44,7 +42,6 @@
       </div>
       <q-btn class="confirm-btn" label="אישור ומעבר לתשלום" @click="SendToPayment()"></q-btn>
     </div>
-  </q-page-container>
 </template>
 
 <script>
@@ -83,14 +80,15 @@ export default {
 }
 
 .confirm-btn {
-  color: #0d0e11;
+  color: #ffffff;
   background: #DA0018;
 }
 
 h1 {
+  margin: 2rem;
   font-size: 3rem;
   font-weight: bold;
-  line-height: 2rem;
+  line-height: 0rem;
   letter-spacing: 0.01em;
 }
 </style>

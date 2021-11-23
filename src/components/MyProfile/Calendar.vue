@@ -80,7 +80,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions("test", ["setDisableWeekdays", 'setDisableWeekdaysChefInBD', 'getDisableWeekdaysChefFromBD', 'setDisableDaysChefInBD', 'getDisableDaysChefFromBD', 'getYardOrdersFromBD']),
+    ...mapActions("test", ["setDisableWeekdays", 'setDisableWeekdaysChefInBD', 'getDisableWeekdaysChefFromBD', 'setDisableDaysChefInBD',
+      'getDisableDaysChefFromBD', 'getYardOrdersFromBD', 'snapDisableWeekdaysChef', 'snapDisableDaysChefFromDB', 'snapYardOrdersFromBD']),
     ...mapActions("users", ['getIdYardByIdChef']),
     ...mapMutations("test", ["resetDisableWeekdays", "resetDisableDays", "resetOrderedEvents"]),
     falseDialog() {
@@ -129,9 +130,12 @@ export default {
     },
   },
   async created() {
-    await this.getDisableWeekdaysChefFromBD(window.user.uid)
-    await this.getDisableDaysChefFromBD(window.user.uid)
-    await this.getYardOrdersFromBD(await this.getIdYardByIdChef(window.user.uid))
+    // await this.getDisableWeekdaysChefFromBD(window.user.uid)
+    // await this.getDisableDaysChefFromBD(window.user.uid)
+    // await this.getYardOrdersFromBD(await this.getIdYardByIdChef(window.user.uid))
+    await this.snapDisableWeekdaysChef( window.user.uid)
+    await this.snapDisableDaysChefFromDB( window.user.uid)
+    await this.snapYardOrdersFromBD( await this.getIdYardByIdChef(window.user.uid))
   }
 }
 </script>

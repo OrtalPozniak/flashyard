@@ -1,5 +1,4 @@
 <template>
-  <q-page-container>
     <div class="payment-card">
       <q-card flat borderedclass="card">
         <q-card-section>
@@ -34,14 +33,13 @@
 
         <q-card-section class="inputs">
           <q-input label="סכום עסקה:" type="number" outlined dense disable/>
-          <div class="pay-button">
-            <q-btn label="אישור ומעבר לתשלום" @click="slockOti()"></q-btn>
+          <div >
+            <q-btn class="btn-circSquare myColor" label="אישור ומעבר לתשלום" @click="slockOti()"></q-btn>
           </div>
         </q-card-section>
 
       </q-card>
     </div>
-  </q-page-container>
 </template>
 
 <script>
@@ -60,10 +58,17 @@ export default {
 </script>
 
 <style scoped>
+
+*{
+  margin: 0;
+  padding: 0;
+}
 .text-h5 {
   font-weight: bold;
 }
-
+q-page-container{
+  padding-right: 0 !important;
+}
 .payment-card {
   height: 100%;
   width: 100%;
@@ -80,7 +85,8 @@ export default {
 }
 
 .pay-button * {
-  background: linear-gradient(to left, #c01039, #dc1223 67%, #de1e1e 84%, #e02a19);
+  /*background: linear-gradient(to left, #c01039, #dc1223 67%, #de1e1e 84%, #e02a19);*/
   font-weight: bold;
+  color: #ffffff;
 }
 </style>

@@ -1,5 +1,6 @@
 import state from "./test.state"
 import FS from '../../middleware/firestore'
+import FBI from "src/middleware/firebase";
 
 export default {
   setDisableWeekdays: async ({commit}, objDays) => {
@@ -34,12 +35,40 @@ export default {
   }),
   getDisableDaysChefFromBD: async ({state, commit}, id) => {
     const disableDays = await FS.users.getDisableDaysChef(id)
-    if (disableDays != null) commit('setStateDisableDays', disableDays.disableDays)
+    if (disableDays != null) commit('setStateDisableDays', disableDays)
   },
   getYardOrdersFromBD: async ({state, commit}, id) => {
     const orderedEvents = await FS.yards.getIdOrderFromYardOrders(id);
     console.log(orderedEvents, 'orderedEvents')
     if (orderedEvents != null) commit('setStateOrderedEvents', orderedEvents)
+  },
+  snapDisableDaysChefFromDB: async ({state, commit},id) => {
+    FBI.DB().collection("users").doc(id).collection('days').doc(`DisableDays-${id}`).onSnapshot((snapshot) => {
+      console.log(snapshot.data(),'snapshot.data()','DisableDays')
+      commit('setStateDisableDays', snapshot.data().disableDays)
+      console.log(state.disableDays,'DisableDays')
+    }, (error) => {
+      console.error(error)
+    });
+  },
+  snapDisableWeekdaysChef: ({state, commit},id) => {
+    FBI.DB().collection("users").doc(id).collection('days').doc(`DisableWeekdays-${id}`).onSnapshot((snapshot) => {
+      console.log(snapshot.data(),'snapshot.data()','DisableWeekdays')
+      commit('setStateDisableWeekdays', snapshot.data())
+      console.log(state.disableWeekdays,'DisableWeekdays')
+    }, (error) => {
+      console.error(error)
+    });
+  },
+  snapYardOrdersFromBD: ({state, commit},id) => {
+    FBI.DB().collection("yards").doc(id).collection('yardOrders').doc(`yardOrders-${id}`).onSnapshot((snapshot) => {
+        console.log(snapshot.data(),'snapshot.data()','orderedEvents')
+      commit('setStateOrderedEvents',snapshot.data().orders)
+        console.log(state.orderedEvents,'orderedEvents')
+      }, (error) => {
+        console.error(error)
+      });
+
   },
 }
 

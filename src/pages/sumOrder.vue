@@ -1,31 +1,47 @@
 <template>
   <div>
-    <sum-order></sum-order>
+    <div class="CountDown">
+      <CountDown/>
+    </div>
+    <div class="component">
+      <sum-order></sum-order>
+    </div>
   </div>
+
 </template>
 
 <script>
 import PaySummary from "components/payment/pay-summary";
 import PayCard from "components/payment/payment-inputs";
 import SumOrder from "components/payment/sumOrder-inputs";
+import CountDown from "components/order/CountDown";
 
 export default {
   name: "paymentPage",
-  components: {SumOrder, PayCard, PaySummary},
+  components: {SumOrder, PayCard, PaySummary, CountDown},
   data() {
-    return {
-
-    }
+    return {}
   },
-  methods:{
-
-  }
+  methods: {}
 }
 </script>
 
 <style scoped>
-*{
+* {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.CountDown {
+  height: 100%;
+  width: 100%;
+  margin-top:2px ;
+}
+
+.component {
+  height: 100%;
+  width: 100%;
+
 }
 </style>

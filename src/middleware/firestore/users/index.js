@@ -15,7 +15,7 @@ import FBI from "src/middleware/firebase";
   function getUserById(Id) {
     return FBI.DB().collection('users').doc(Id).get()
       .then((response) => response.data())
-      .catch(err => console.error(err))
+      .catch(err => console.error("getUserById"))
   }
 
   function setDisableWeekdaysChef(option){
@@ -25,7 +25,7 @@ import FBI from "src/middleware/firebase";
   async function getDisableWeekdaysChef(id) {
     const docRef = await FBI.DB().collection("users").doc(id).collection('days').doc(`DisableWeekdays-${id}`);
     const doc = await docRef.get()
-   const data = doc.data()
+    const data = doc.data()
     return data
   }
 
@@ -36,7 +36,16 @@ import FBI from "src/middleware/firebase";
   async function getDisableDaysChef (id){
     const docRef = await FBI.DB().collection("users").doc(id).collection('days').doc(`DisableDays-${id}`);
     const doc = await docRef.get()
-    return doc.data()
+    const data =doc.data()
+    return data.disableDays
+  }
+  async function snapDisableDaysChef (id) {
+    FBI.DB().collection("users").doc(id).collection('days').doc(`DisableDays-${id}`).onSnapshot((snapshot) => {
+      console.log(snapshot.data(), 'snapshot.data()')
+      return snapshot.data()
+    }, (error) => {
+      console.error(error)
+    });
   }
 
   async function uploadProfilePic (url){
@@ -55,5 +64,6 @@ export default {
   getDisableDaysChef,
   setDisableDaysChef,
   setDisableWeekdaysChef,
-  getDisableWeekdaysChef
+  getDisableWeekdaysChef,
+  snapDisableDaysChef
 }

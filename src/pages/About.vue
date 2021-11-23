@@ -100,7 +100,7 @@ export default {
 </script>
 
 <style scoped>
-*{
+*{;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -136,7 +136,7 @@ p.blockText{
   /*margin-right: auto;*/
   margin: 3vw;
   width: 60vw;
-  font-size:small;
+  font-size:medium;
   font-weight: bold;
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }

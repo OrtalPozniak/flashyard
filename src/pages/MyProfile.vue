@@ -41,7 +41,7 @@ import Calendar from "components/MyProfile/Calendar";
 import historyOrders from "components/MyProfile/HistoryOrders";
 import personalSettings from "components/MyProfile/PersonalSettings";
 import customerService from "components/MyProfile/CustomerService";
-import {mapMutations, mapState} from "vuex";
+import {mapActions, mapMutations, mapState} from "vuex";
 import FS from "src/middleware/firestore";
 
 export default {
@@ -53,15 +53,16 @@ export default {
       compToShow:'',
       showComp:false,
       numOfCircles: 3,
-      imageUrl:''
+      imageUrl:'',
+      // imageUrlToShow:''
     };
   },
   computed:{
     ...mapState('users',['users','newUser']),
-    ...mapMutations('users',['pushPhoto']),
-
   },
   methods:{
+    ...mapMutations('users',['pushPhoto']),
+    ...mapActions('users',['createProfile','updateProfile']),
     getMenuCSS: function () {
       return "menu circle " + (this.active ? "active" : "");
     },
@@ -113,7 +114,7 @@ export default {
 
     },
     circlesToShow: async function(){
-      let businessClient = await localStorage.getItem('isAChef');
+      let businessClient = localStorage.getItem('isAChef');
       if (businessClient=="true"){
          this.numOfCircles = 4;
       }else {
@@ -121,11 +122,16 @@ export default {
       }
     },
     initProfile:async function (){
+      debugger
       const idU = localStorage.getItem('uid')
       console.log(idU)
       let profileData = await FS.users.getUserById(idU)
-      this.imageUrl = this.newUser.imgUrl
-      await this.pushPhoto(profileData.imgUrl,this.imageUrl)
+      // this.imageUrl = this.newUser.imgUrl
+      this.imageUrl = profileData.imgUrl
+      if (profileData.imgUrl) {
+        await this.pushPhoto(profileData.imgUrl)
+        // await this.createProfile(profileData.imgUrl)
+      }
     }
   },
 
