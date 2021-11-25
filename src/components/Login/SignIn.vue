@@ -4,7 +4,7 @@
 <!--    <div>-->
 <!--      <ResetPassword v-if="forgetPass"/>-->
 <!--    </div>-->
-    <q-card class="centerBoxPos colorBox">
+    <q-card class="centerBoxPos shadowBox">
       <q-card-section  class="text-white" style="background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
 ">
         <q-resize-observer @resize="setAtr()"/>

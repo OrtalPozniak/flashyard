@@ -2,9 +2,9 @@
   <div class="feed">
     <YardCard v-for="yard of myYards" :yard="yard"/>
     <InfiniteLoading @infinite="infiniteHandler">
-      <span class="noMore" slot="no-more">
-      אין חצרות נוספות
-    </span>
+      <span v-show="!myYards" class="noMore" slot="no-more">
+        אין חצרות נוספות
+      </span>
     </InfiniteLoading>
   </div>
 </template>
@@ -72,11 +72,10 @@ export default {
 
 <style>
 .feed {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin: 5vw ;
   display: grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-  /*grid-template-columns: 1fr 1fr;*/
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  /*grid-template-columns: 1fr;*/
   grid-gap: 2rem;
   align-items: center;
   justify-content: center;

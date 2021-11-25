@@ -34,7 +34,10 @@
     display: block !important;
   }
   .card-category{
-    margin-top: 25vw !important;
+    margin: 8vw !important;
+  }
+  .card-details{
+    margin: 3vw !important;
   }
   .containerCarousel{
     width: 70vw !important;
@@ -103,7 +106,9 @@
   }
   p.blockText{
     font-size: smaller !important;
-
+  }
+  .card-title{
+    height: 10vw !important;
   }
 
 }

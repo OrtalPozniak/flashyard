@@ -26,8 +26,8 @@ html, body {
   justify-content: center;
   align-content: center;
 }
-.colorBox{
-  box-shadow: 7px 5px 5px rgb(140 140 140);
+.shadowBox{
+  box-shadow: 3px 3px 5px 3px rgb(140 140 140);
   background: #FFFAF0;
 }
 .topSpaceForm{

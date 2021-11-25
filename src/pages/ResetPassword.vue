@@ -1,6 +1,6 @@
 <template>
   <div class=" row items-start q-gutter-md page ">
-    <q-card class="centerBoxPos colorBox boxWidth">
+    <q-card class="centerBoxPos shadowBox boxWidth">
       <q-card-section  class="text-white" style="background-color: #DA0018;">
         <q-resize-observer @resize="setAtr()"/>
         <div align="center" class="text-h6">RESET PASSWORD</div>

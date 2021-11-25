@@ -1,9 +1,7 @@
 <template>
     <div>
-      <!------------------------------------show card cover--------------------------------------
-      :style="{backgroundImage:`linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)),
-      url(${yard.cover})`}"-->
-      <div class="card"  >
+      <div class="card" :style="{backgroundImage:`linear-gradient(rgba(19, 10, 10, 0.8), rgba(231, 37, 37, 0.3)),
+      url(${yard.cover})`}">
         <div class="card-headers">
           <h4 class="card-title">{{ yard.yardName }}</h4>
         </div>
@@ -18,21 +16,21 @@
           <q-list class="-horizontal">
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon" color="black" text-color="white" icon="room" />
+                <q-avatar class="icon" color="grey-9" text-color="white" icon="room" />
               </q-item-section>
 
               <q-item-section class="icon-text">{{yard.location}}</q-item-section>
             </q-item>
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon"  color="black" text-color="white" icon="fas fa-user-alt icon " />
+                <q-avatar class="icon"  color="grey-9" text-color="white" icon="fas fa-user-alt icon " />
               </q-item-section>
 
               <q-item-section class="icon-text"> {{yard.peopleRange.min}}-{{yard.peopleRange.max}}</q-item-section>
             </q-item>
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon" color="black" text-color="white" icon="fas fa-shekel-sign icon" />
+                <q-avatar class="icon" color="grey-9" text-color="white" icon="fas fa-shekel-sign icon" />
               </q-item-section>
 
               <q-item-section class="icon-text">{{yard.pricePerHead}} ש"ח </q-item-section>
@@ -40,7 +38,7 @@
           </q-list>
 
         </div>
-        <button class="card-btn" @click="goToItem(yard.id)">לפרטים נוספים</button>
+        <button class="btn-circSquare myColor card-btn " @click="goToItem(yard.id)">לפרטים</button>
         </div>
   </div>
 </template>
@@ -93,14 +91,15 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
-  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 3rem 3rem, rgba(2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
   width: 100%;
-  height: 100%;
-  margin-top: 3vw;
-  padding-bottom: 3vw;
-  border-radius: 40px;
+  min-height: 450px;
+  padding: 1.5vw;
+  border-radius: 8px;
   transition: all 500ms;
   overflow: hidden;
+  /*background-image: linear-gradient(rgba(19, 10, 10, 0.3), rgba(231, 37, 37, 0.8));*/
+  /*background-image: linear-gradient(rgba(19, 10, 10, 0.3), rgba(231, 37, 37, 0.8));*/
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -111,15 +110,15 @@ export default {
   text-align: left;
   display: flex;
   justify-content: center;
-  margin-top:1vw;
+  color: #FFFAF0;
 
+  /*color:rgb(75,69,69);*/
 }
 
 
 .icon {
   font-size: 3vh;
   margin-right: 10px;
-
 }
 
 .icon-text {
@@ -135,43 +134,45 @@ export default {
 }
 
 .card-title {
-  margin: 2vw;
+  margin-bottom: 0.5vw;
   font-family: Rubik;
   font-weight: bold;
   font-size: x-large;
   text-align: center;
-  letter-spacing: 0.1rem;
-  color: #1D1D1D;
+  letter-spacing: 0.05rem;
+  color: #FFFAF0;
+  /*color: rgb(75,69,69);*/
   height: 2vw;
 }
 
 .card-category {
   font-size: medium;
   text-align: center;
-  color: black;
+  color: #FFFAF0;
+  /*color: rgb(75,69,69);*/
   margin: 1vw;
   height: 2vw;
 
 }
 
-
-.card:hover {
-
-  /*transform: translateY(0);*/
-}
-
 .card-btn {
-  font-size: 20px;
-  font-family: Rubik;
-  background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
-  color: white;
-  border: none;
-  padding: 10px 12px;
-  margin-top: 2vw;
-  margin-bottom: 15px;
-  border-radius: 4px;
   cursor: pointer;
+  width: 70%;
+  height: 40px;
+  margin-top: 2vw;
+  font-size: medium;
+  font-family: Rubik;
+  color: #FFFAF0;
+  background: none;
   box-shadow: rgba(3, 8, 20, 0.1) 0 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0 0.075rem 0.175rem;
-
+}
+.q-item {
+  min-height: 35px !important;
+}
+.card:hover{
+  box-shadow: 0 0 18px 0 rgb(0 0 0 / 65%);
+}
+.card-btn:hover{
+  box-shadow: 0 0 18px 0 rgb(0 0 0 / 65%);
 }
 </style>
