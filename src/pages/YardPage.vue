@@ -2,7 +2,9 @@
   <div class="page YardBG">
     <div class="q-pa-md">
       <h3 class="text-center myTxt" style="margin-bottom:-5px;">{{ editedYard.yardName }}</h3><br>
-      <h5 class="text-center myTxt">{{ editedYard.placeDesc }}</h5>
+      <div class="text-center" style="display: flex;justify-content: center;">
+        <h5 class=" descTxt">{{ editedYard.placeDesc }}</h5>
+      </div>
       <div class="yardContainer">
         <div class=" desc">
           <p>
@@ -115,17 +117,24 @@ export default {
 
 .myTxt {
   font-family: 'Rubik', sans-serif;
+  color: #403e3e;
 }
 
 .desc {
-  font-size: 20px;
+  font-size: small;
   display: table;
   align-items: center;
   direction: ltr;
+  color: #403e3e;
 }
 
+.descTxt{
+  font-size: large;
+  width: 50vw;
+  color: #403e3e;
+}
 .YardBG {
-  background: #FFFAF0;
+  background:white;
 }
 
 .showPreview {

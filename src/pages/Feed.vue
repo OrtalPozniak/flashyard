@@ -76,7 +76,7 @@ export default {
   display: grid;
   grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
   /*grid-template-columns: 1fr;*/
-  grid-gap: 2rem;
+  grid-gap: 3rem;
   align-items: center;
   justify-content: center;
 }

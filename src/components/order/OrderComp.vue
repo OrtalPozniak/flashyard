@@ -1,6 +1,6 @@
 <template >
   <div class="page">
-    <div class="q-pa-md centerBoxPos text-center" style="width: 40vw;">
+    <div class="q-pa-md centerBoxPos text-center " style="width: 40vw;">
       <P class="textHeader text-center">באיזה יום תרצו להגיע ? </P>
       <div>
         <DatePicker class="myColor" locale="he" is-dark color="#FFFAF0"
@@ -72,7 +72,7 @@
           </q-item-section>
         </q-item>
       </q-list>
-        <q-btn @click="goToSummary" class="myColor" glossy label="מעבר לתשלום"/>
+        <q-btn @click="goToSummary" class="myColor btnPay" text-color="white" glossy label="מעבר לתשלום"/>
       <!--      <p> editedYard: {{ editedYard }} </p>-->
       <!--      <p> editedYardId: {{ editedYardId }} </p>-->
       <!--      <p> createAllDisableDays: {{ AllDisableDays }} </p>-->
@@ -159,8 +159,23 @@ export default {
 </script>
 
 <style scoped>
+*{
+  color: #403e3e;
+}
 .textHeader {
   /*  text-align: center;*/
-  font-size: 1.3rem;
+  font-size: large;
+  color: #403e3e;
+  font-family: Rubik;
+}
+p{
+  font-family: Rubik;
+  color: #403e3e;
+  font-size: x-small;
+}
+.btnPay{
+  font-family: Rubik;
+  font-weight: bold;
+  border-radius: 15px;
 }
 </style>

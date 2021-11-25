@@ -60,6 +60,11 @@ html, body {
   border-radius: 15px;
   border: none;
   background: #F6F7F9;
+   color: #403e3e;
+}
+input:focus{
+  outline: none;
+  border: 2px solid #c01039;
 }
 
 .profileChanger{

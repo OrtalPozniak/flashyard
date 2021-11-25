@@ -144,7 +144,7 @@ export default {
 
 
 .topDiv{
-  background: linear-gradient(to left,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
+  background: linear-gradient(to left, #4C0305FF,#7d0b15 30%,#de1e1e 84%,#e02a19);
 }
 .boxAfter:after{
   height:100px;
@@ -152,7 +152,7 @@ export default {
   left:0;
   top:-35px;
   transform: skewY(-3deg);
-  background: linear-gradient(to left,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
+  background: linear-gradient(to left,#4C0305FF,#7d0b15 30%,#de1e1e 84%,#e02a19);
   z-index:1;
   content: "";
   margin-top: -70px;
@@ -250,8 +250,8 @@ export default {
 :root {
   --font: white;
   --bg: white;
-  --circle: #c01039;
-  --circle-main: #c01039;
+  --circle: #990e1a;
+  --circle-main: #990e1a;
 }
 
 html,
@@ -327,8 +327,8 @@ $circle-margin: $circle-size * 2;
     $button-size: ($circle-size / 6);
     cursor: pointer;
     z-index: 9999;
-    border: $button-size solid #dc1223;
-    background: #dc1223;
+    border: $button-size solid #990e1a;
+    background: #990e1a;
     transition: all 0.25s ease-in;
 
   }

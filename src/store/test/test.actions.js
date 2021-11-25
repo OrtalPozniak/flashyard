@@ -24,7 +24,7 @@ export default {
   }),
   getDisableWeekdaysChefFromBD: async ({state, commit}, id) => {
     const disableWeekdays = await FS.users.getDisableWeekdaysChef(id)
-      if (disableWeekdays != null) commit('setStateDisableWeekdays', disableWeekdays)
+    if (disableWeekdays != null) commit('setStateDisableWeekdays', disableWeekdays)
   },
   setDisableDaysChefInBD: (async ({state, commit}) => {
     const option = {
@@ -45,7 +45,11 @@ export default {
   snapDisableDaysChefFromDB: async ({state, commit},id) => {
     FBI.DB().collection("users").doc(id).collection('days').doc(`DisableDays-${id}`).onSnapshot((snapshot) => {
       console.log(snapshot.data(),'snapshot.data()','DisableDays')
-      commit('setStateDisableDays', snapshot.data().disableDays)
+      if (snapshot.data()!= null||snapshot.data()!=undefined){
+        commit('setStateDisableDays', snapshot.data().disableDays)
+      }else {
+        commit('setStateDisableDays',[])
+      }
       console.log(state.disableDays,'DisableDays')
     }, (error) => {
       console.error(error)
@@ -54,7 +58,12 @@ export default {
   snapDisableWeekdaysChef: ({state, commit},id) => {
     FBI.DB().collection("users").doc(id).collection('days').doc(`DisableWeekdays-${id}`).onSnapshot((snapshot) => {
       console.log(snapshot.data(),'snapshot.data()','DisableWeekdays')
-      commit('setStateDisableWeekdays', snapshot.data())
+      console.log(snapshot.data())
+      if (snapshot.data()!= null||snapshot.data()!= undefined){
+        commit('setStateDisableWeekdays', snapshot.data())
+      }else{
+        commit('setStateDisableWeekdays', {weekdays:[]})
+      }
       console.log(state.disableWeekdays,'DisableWeekdays')
     }, (error) => {
       console.error(error)
@@ -62,12 +71,16 @@ export default {
   },
   snapYardOrdersFromBD: ({state, commit},id) => {
     FBI.DB().collection("yards").doc(id).collection('yardOrders').doc(`yardOrders-${id}`).onSnapshot((snapshot) => {
-        console.log(snapshot.data(),'snapshot.data()','orderedEvents')
-      commit('setStateOrderedEvents',snapshot.data().orders)
-        console.log(state.orderedEvents,'orderedEvents')
-      }, (error) => {
-        console.error(error)
-      });
+      console.log(snapshot.data(),'snapshot.data()','orderedEvents')
+      if (snapshot.data()!= null||snapshot.data()!=undefined) {
+        commit('setStateOrderedEvents',snapshot.data().orders)
+      }else{
+        commit('setStateOrderedEvents',[])
+      }
+      console.log(state.orderedEvents,'orderedEvents')
+    }, (error) => {
+      console.error(error)
+    });
 
   },
 }

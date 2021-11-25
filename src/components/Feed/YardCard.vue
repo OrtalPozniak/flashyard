@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="card" :style="{backgroundImage:`linear-gradient(rgba(19, 10, 10, 0.7), rgba(231, 37, 37, 0.3)), url(${yard.cover || defaultImage})`}">
+      <div class="card" :style="{backgroundImage:`linear-gradient(rgba(19, 10, 10, 0.7), rgba(255, 255, 255, 0.4)), url(${yard.cover || defaultImage})`}">
         <div class="card-headers">
           <h4 class="card-title">{{ yard.yardName }}</h4>
         </div>
@@ -15,21 +15,21 @@
           <q-list class="-horizontal">
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon" color="grey-9" text-color="white" icon="room" />
+                <q-avatar class="icon" color="red-10" text-color="white" icon="room" />
               </q-item-section>
 
               <q-item-section class="icon-text">{{yard.location}}</q-item-section>
             </q-item>
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon"  color="grey-9" text-color="white" icon="fas fa-user-alt icon " />
+                <q-avatar class="icon"  color="red-10" text-color="white" icon="fas fa-user-alt icon " />
               </q-item-section>
 
               <q-item-section class="icon-text"> {{yard.peopleRange.min}}-{{yard.peopleRange.max}}</q-item-section>
             </q-item>
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon" color="grey-9" text-color="white" icon="fas fa-shekel-sign icon" />
+                <q-avatar class="icon" color="red-10" text-color="white" icon="fas fa-shekel-sign icon" />
               </q-item-section>
 
               <q-item-section class="icon-text">{{yard.pricePerHead}} ש"ח </q-item-section>
@@ -37,7 +37,7 @@
           </q-list>
 
         </div>
-        <button class="btn-circSquare myColor card-btn " @click="goToItem(yard.id)">לפרטים</button>
+        <button class="btn-circSquare card-btn " @click="goToItem(yard.id)">לפרטים</button>
         </div>
   </div>
 </template>
@@ -164,7 +164,7 @@ export default {
   font-size: medium;
   font-family: Rubik;
   color: #FFFAF0;
-  background: none;
+  background: linear-gradient(45deg,transparent,#DA0018,transparent);
   box-shadow: rgba(3, 8, 20, 0.1) 0 0.15rem 0.5rem, rgba(2, 8, 20, 0.1) 0 0.075rem 0.175rem;
 }
 .q-item {

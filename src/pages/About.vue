@@ -18,7 +18,7 @@
         </p>
       </div>
       <div class="aboutSectionDown">
-        <h5 class="text-center headline" style="color: #683a5d;font-family: Rubik;">הצוות שלנו</h5>
+        <h5 class="text-center headline" style="color: rgb(71,29,31);font-family: Rubik;">הצוות שלנו</h5>
 
         <div class="meetTeam">
           <li>
@@ -112,7 +112,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2vw;
+  /*padding: 2vw;*/
   margin-bottom: 10vw;
 }
 .aboutSectionMid{
@@ -122,8 +122,9 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image:  linear-gradient(rgba(147, 4, 4, 0.6), rgba(116, 33, 33, 0.6)),url("https://dd6zdpp5d7qwx.cloudfront.net/wp-content/uploads/2018/09/10102455/39316783_l-1024x510.jpg");
+  background-image:  linear-gradient( rgba(234, 11, 11, 0.5),rgba(24, 12, 12, 0.9)),url("https://cf.ltkcdn.net/garden/images/orig/257825-2121x1414-family_back_yard.jpg");
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 p{
@@ -135,6 +136,7 @@ p.blockText{
   /*margin-left: auto;*/
   /*margin-right: auto;*/
   margin: 3vw;
+  padding-bottom: 5vw;
   width: 60vw;
   font-size:medium;
   font-weight: bold;
@@ -142,7 +144,7 @@ p.blockText{
 }
 .aboutSectionDown{
   height: 55vh;
-  background: #FFFAF0;
+  background: white;
   color: #FFFAF0;
 }
 .shadowPic{
@@ -189,7 +191,7 @@ li>.ch-item{
 }
 .ch-info .ch-info-back {
   transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
-  background-image: linear-gradient(rgba(147, 4, 4, 0.6), rgba(116, 33, 33, 0.6)),url("https://dd6zdpp5d7qwx.cloudfront.net/wp-content/uploads/2018/09/10102455/39316783_l-1024x510.jpg");
+  background-image:  linear-gradient( rgba(234, 11, 11, 0.5),rgba(24, 12, 12, 0.9)),url("https://cf.ltkcdn.net/garden/images/orig/257825-2121x1414-family_back_yard.jpg");
   opacity: 0;
 }
 .ch-img-1 {
