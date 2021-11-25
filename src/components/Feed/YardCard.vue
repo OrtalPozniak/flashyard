@@ -1,7 +1,6 @@
 <template>
     <div>
-      <div class="card" :style="{backgroundImage:`linear-gradient(rgba(19, 10, 10, 0.8), rgba(231, 37, 37, 0.3)),
-      url(${yard.cover})`}">
+      <div class="card" :style="{backgroundImage:`linear-gradient(rgba(19, 10, 10, 0.7), rgba(231, 37, 37, 0.3)), url(${yard.cover || defaultImage})`}">
         <div class="card-headers">
           <h4 class="card-title">{{ yard.yardName }}</h4>
         </div>
@@ -53,6 +52,7 @@ export default {
   data() {
     return {
       bgImage:'',
+      defaultImage: 'https://firebasestorage.googleapis.com/v0/b/flashyard2.appspot.com/o/yardsImages%2Fhaim%2FWrVuYKAs5vVX3soCVh9h%2FWrVuYKAs5vVX3soCVh9h_458.59621776990434?alt=media&token=77832530-0d80-4d23-8aa3-776dfb593206'
     }
   },
   computed: {
@@ -148,6 +148,7 @@ export default {
 .card-category {
   font-size: medium;
   text-align: center;
+  font-weight: bold;
   color: #FFFAF0;
   /*color: rgb(75,69,69);*/
   margin: 1vw;
