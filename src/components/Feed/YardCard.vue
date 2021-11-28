@@ -5,13 +5,13 @@
           <h4 class="card-title">{{ yard.yardName }}</h4>
         </div>
         <div class="card-headers">
-          <h4 class="card-category">קטגוריה:
+          <h4 class="card-category fontWeb">קטגוריה:
             <span   v-for="(category,index) of yard.foodCategory"> {{ category }}
               <span v-if="yard.foodCategory.length>1 && index!==yard.foodCategory.length-1">,</span>
             </span>
           </h4>
         </div>
-        <div class="card-details">
+        <div class="card-details fontWeb">
           <q-list class="-horizontal">
             <q-item>
               <q-item-section avatar>

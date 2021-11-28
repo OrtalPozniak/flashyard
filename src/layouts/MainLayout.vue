@@ -34,7 +34,7 @@
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
+          class="text-grey-8 fontWeb"
         >
           שלום {{this.newUser.firstName}}
         </q-item-label>
@@ -56,7 +56,7 @@
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>{{ item.title }}</q-item-label>
+            <q-item-label class="fontWeb text-grey-8">{{ item.title }}</q-item-label>
           </q-item-section>
         </q-item>
         <q-separator/>
