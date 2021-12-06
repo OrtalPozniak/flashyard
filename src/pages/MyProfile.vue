@@ -44,6 +44,7 @@ import customerService from "components/MyProfile/CustomerService";
 import {mapActions, mapMutations, mapState} from "vuex";
 import FS from "src/middleware/firestore";
 
+import HistoryOrders from "components/MyProfile/HistoryOrders";
 export default {
   name: "MyProfile",
   components: {Calendar,historyOrders,personalSettings,customerService},

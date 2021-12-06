@@ -21,5 +21,14 @@ export default {
     })
   }),
 
+  getOrdersByUserId:((userId)=>{
+    return FBI.DB().collection('orders')
+      .where('uidClient', '==', `${userId}`)
+      .get()
+      .then(response=>{
+        return response.docs.map(doc=>doc.data())
+      })
+      .catch(err => console.error(err))
+  })
 
 }

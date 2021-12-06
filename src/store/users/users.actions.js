@@ -47,19 +47,24 @@ export default {
     }
   },
 
-  async signOutAction({state, commit}) {
+  async signOutAction({state, commit,dispatch}) {
     try {
       // Sign-out successful.
+      debugger
+      dispatch('yards/delAllYards', null /*or whatever payload*/, {root: true})
       await auth.logOutFB();
+
       if (state.signUp) {
         commit('changeSignUp', false)
       }
       localStorage.removeItem("yardId")
       localStorage.removeItem("isAChef")
+      commit('', false)
       await this.$router.push('/login')
     } catch (err) {
       // An error happened.
       console.log("there have been an error signing out", err);
+
     }
   },
 
@@ -98,12 +103,8 @@ export default {
       console.log(errorCode, errorMessage)
     }
   },
-  getIdYardByIdChef: async ({}, idChef) => {
-    debugger
-    const chef = await FS.users.getUserById(idChef)
-    return chef.yardId
-  },
-  createChef: async ({state, commit}) => {
+
+  createChef: async ({state,commit})=>{
 
     // let user = await FS.getUserById(window.user.uid)
     await FS.users.createNewChef()
@@ -121,19 +122,11 @@ export default {
     } else {
       user = await FS.users.getUserById(obj.myData.id)
     }
-    commit('setEditedUser', user)
-    commit('insertUser', user)
+    commit('setEditedUser',user)
+    commit('insertUser',user)
+    // commit('setEditedYardId',id)
+    // commit('setEditedYard',yard)
 
   },
-  createProfile:async ({commit,state},imageData)=> {
-    let url = imageData
-    await FS.users.uploadProfilePic(url)
-    await commit('pushPhoto',url)
-  },
-
-  updateProfile: async ({commit,state}, obj)=>{
-    commit('updatePro', obj)
-  }
-
 
 }

@@ -136,8 +136,8 @@ export default {
         this.$router.push(chosenItem.link)
       }else if(chosenItem.title==="החצר שלי"){
         const yard = JSON.parse(localStorage.getItem('yardId'))
-        debugger;
-        console.log(yard)
+        ;
+        (yard)
         this.$router.push(`${chosenItem.link}${yard}`)
       }else if (chosenItem.title==="הוסף חצר"){
         this.$router.push(chosenItem.link)

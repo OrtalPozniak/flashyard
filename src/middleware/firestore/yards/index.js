@@ -15,7 +15,7 @@ async function getYards() {
   })
 }
 
- function createYardId(){
+function createYardId(){
   return   FBI.DB().collection('yards').doc().id
 }
 
@@ -37,10 +37,10 @@ function updateYard(yard,id)
 }
 function getFoodCat()
 {
-      return FBI.DB().collection('food_categories').get()
-          .then(res=>{
-            return res.docs.map(doc=>doc.data())
-          })
+  return FBI.DB().collection('food_categories').get()
+    .then(res=>{
+      return res.docs.map(doc=>doc.data())
+    })
 }
 function addIdOrderToYardOrders(option) {
   const ref = FBI.DB().collection("yards").doc(option.idYard).collection('yardOrders').doc(`yardOrders-${option.idYard}`)
@@ -102,4 +102,3 @@ export default {
   uploadYardsImages,
   deleteYardsImages,
 }
-

@@ -80,7 +80,9 @@ input:focus{
   align-content: center;
   margin-bottom: 10vw;
 }
-
+.headline{
+  font-family: 'Palanquin Dark',sans-serif;
+}
 .fontWeb{
   font-family: Rubik;
 }

@@ -15,7 +15,7 @@ export default function (/* { ssrContext } */) {
       yards,
       payment,
       order,
-      test
+      test,
     },
     plugins: [
     ],
