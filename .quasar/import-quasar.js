@@ -15,7 +15,7 @@ import lang from 'quasar/lang/he'
 
 import Vue from 'vue'
 
-import {Quasar,Notify} from 'quasar'
+import {Quasar,Notify,Dialog} from 'quasar'
 
 
-Vue.use(Quasar, { config: {},lang: lang,plugins: {Notify} })
+Vue.use(Quasar, { config: {},lang: lang,plugins: {Notify,Dialog} })

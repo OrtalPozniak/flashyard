@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="CountDown">
-      <CountDown/>
+      <CountDown @timerStop="timerStop()"/>
     </div>
     <div class="component">
       <sum-order></sum-order>
@@ -22,7 +22,11 @@ export default {
   data() {
     return {}
   },
-  methods: {}
+  methods: {
+    timerStop(){
+      this.$router.push('/feed')
+    },
+  }
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="feed">
     <YardCard v-for="yard of myYards" :yard="yard"/>
-    <InfiniteLoading @infinite="infiniteHandler">
+    <InfiniteLoading spinner="circles"  @infinite="infiniteHandler">
       <span v-show="!myYards" class="noMore" slot="no-more">
         אין חצרות נוספות
       </span>

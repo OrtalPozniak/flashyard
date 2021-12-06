@@ -110,6 +110,9 @@
   .card-title{
     height: 10vw !important;
   }
+  .aboutSectionDown {
+    height: 100vh;
+  }
 
 }
 

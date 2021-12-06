@@ -148,6 +148,9 @@ export default {
     },
 
   },
+  watch(){
+    Timer/stop
+  },
   async created() {
     // console.log(this.editedYard)
     this.updateMinPeopleInCreate()

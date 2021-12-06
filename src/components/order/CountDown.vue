@@ -43,7 +43,7 @@ export default {
 
       if (this.total <= 0) {
         clearInterval(this.interval)
-        this.$bus.$emit('Timer/stop')
+        this.$emit('timerStop')
       }
 
       this.total -= 1

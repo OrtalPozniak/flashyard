@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="CountDown">
-      <CountDown/>
+      <CountDown @timerStop="timerStop()"/>
     </div>
     <div class="component">
       <payment-inputs></payment-inputs>
@@ -12,9 +12,18 @@
 <script>
 import PaymentInputs from "components/payment/payment-inputs";
 import CountDown from "components/order/CountDown";
+
 export default {
   name: "payment",
-  components: {PaymentInputs,CountDown}
+  components: {PaymentInputs, CountDown},
+  data() {
+    return {}
+  },
+  methods: {
+    timerStop() {
+      this.$router.push('/feed')
+    },
+  }
 }
 </script>
 
@@ -30,7 +39,7 @@ export default {
 .CountDown {
   height: 100%;
   width: 100%;
-  margin-top:2px ;
+  margin-top: 2px;
 }
 
 .component {

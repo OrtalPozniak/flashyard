@@ -14,23 +14,27 @@ export default {
       uidYard: yard.editedYardId,
       pricePerHead: yard.editedYard.pricePerHead,
       totalPrice: yard.editedYard.pricePerHead * option.numOfPeople,
-      email:'dlevy28@gmail.com',
-      payment:false,
-      creationTime:new Date(),
+      email: 'dlevy28@gmail.com',
+      payment: false,
+      creationTime: new Date(),
     }
     console.log(order, 'orderrrrrr')
     await commit('setOrderDetails', order)
   },
-  createOrderInDB: async ({state}) => {
+  createOrderInDB: async ({state,commit}) => {
     const orderId = await FS.orders.createOrder(state.orderDetails)
-    await FS.yards.addIdOrderToYardOrders({idYard:state.orderDetails.uidYard,data:{idOrder: orderId,date:state.orderDetails.date}})
+    await FS.yards.addIdOrderToYardOrders({
+      idYard: state.orderDetails.uidYard,
+      data: {idOrder: orderId, date: state.orderDetails.date}
+    })
+    commit('setOrderId', orderId)
     return orderId
   },
-  getOrderAndUserById:(async ({state, commit},id)=>{
-        const order=await FS.orders.getOrderById(id)
-    const user=await FS.users.getUserById(order.uidClient)
-    const OrderAndUser={...user,...order}
-    console.log(OrderAndUser,'OrderAndUser')
+  getOrderAndUserById: (async ({state, commit}, id) => {
+    const order = await FS.orders.getOrderById(id)
+    const user = await FS.users.getUserById(order.uidClient)
+    const OrderAndUser = {...user, ...order}
+    console.log(OrderAndUser, 'OrderAndUser')
     return OrderAndUser
   }),
   CheckingOrderWithDB: async ({state, commit}) => {
@@ -85,9 +89,11 @@ export default {
     //await FS.addIdOrder(state.orderDetails)
     return true
   },
+  updatePaymentToTrue: async ({state, commit}, id) => {
+    await commit('updateStatePayment', true)
+    await FS.orders.updatePayment(id,true)
+  },
 }
-
-
 
 
 function _stringToDate(string) {
@@ -96,22 +102,26 @@ function _stringToDate(string) {
   let year = parseInt(string.split("/")[0])
   return new Date(year, month, day)
 }
+
 function _dateToString(date) {
   const YYYY = date.getFullYear()
   const MM = ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1)))
   const DD = ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()))
   return YYYY + '/' + MM + '/' + DD
 }
+
 function _isTheStringDateInTheArray(stringDate, arr) {
   let inArr = false
   if (arr !== []) for (const element of arr) (element.date === stringDate) ? inArr = true : null
   return inArr
 }
+
 function _isTheNumDayInDisableWeekdays(numDay, arr) {
   let inArr = false
   if (arr !== []) for (const element of arr) (element === numDay) ? inArr = true : null
   return inArr
 }
+
 function _stringDateToNumDay(stringDate) {
   return _stringToDate(stringDate).getDay() + 1
 }
