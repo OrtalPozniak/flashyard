@@ -11,11 +11,11 @@
             </span>
           </h4>
         </div>
-        <div class="card-details fontWeb">
+        <div class="card-details">
           <q-list class="-horizontal">
             <q-item>
               <q-item-section avatar>
-                <q-avatar class="icon" color="red-10" text-color="white" icon="room" />
+                <q-avatar class="icon" color="black" text-color="white" icon="room" />
               </q-item-section>
 
               <q-item-section class="icon-text">{{yard.location}}</q-item-section>
@@ -37,7 +37,7 @@
           </q-list>
 
         </div>
-        <button class="btn-circSquare card-btn " @click="goToItem(yard.id)">לפרטים</button>
+        <button class="btn-circSquare card-btn " @click="goToYard(yard.id)">לפרטים</button>
         </div>
   </div>
 </template>
@@ -65,9 +65,10 @@ export default {
     /***********************goToItem****************
      *     open yard in singlePage                 *
      ***********************************************/
-    goToItem(id) {
-      debugger
+    goToYard(id) {
+
       this.setEditedYardId(id)
+      debugger
       this.setEditedYardById()
       this.$router.push(`/YardPage${id}`)
     },

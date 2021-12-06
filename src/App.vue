@@ -10,3 +10,9 @@ export default {
 }
 </script>
 
+<style>
+#q-app{
+  font-family: 'Rubik', sans-serif;
+}
+</style>
+

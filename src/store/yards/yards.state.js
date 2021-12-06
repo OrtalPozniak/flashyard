@@ -16,7 +16,7 @@ export default {
     foodCategory:[],
     placeDesc:'',
     imagesUrl:'',
-    cover:'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg',
+    cover:'https://image.shutterstock.com/image-vector/no-image-available-sign-internet-260nw-261719003.jpg'
   }
 
 

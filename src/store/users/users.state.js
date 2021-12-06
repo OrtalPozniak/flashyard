@@ -9,8 +9,7 @@ export default {
         isAChef: false,
         imgUrl:''
     },
-    loginUser : {},
-
+    loginUser : {}
 
 
 }

@@ -2,9 +2,9 @@
   <div class="feed">
     <YardCard v-for="yard of myYards" :yard="yard"/>
     <InfiniteLoading @infinite="infiniteHandler">
-      <span v-show="!myYards" class="noMore" slot="no-more">
-        אין חצרות נוספות
-      </span>
+      <div slot="no-results"></div>
+      <div slot="no-more"></div>
+
     </InfiniteLoading>
   </div>
 </template>
@@ -23,7 +23,6 @@ export default {
   data() {
     return {
       myYards: [],
-      loading: false,
     }
   },
 
@@ -48,22 +47,22 @@ export default {
      *this function make infinity scroll pagination  *
      ************************************************/
     async infiniteHandler($state) {
+      debugger
+      console.log(this.yardsCount)
+      debugger
       if (this.yardsCount) {
         const newYards = await this.loadData()
         if (newYards) {
-          this.loading = true
           return $state.loaded()
         }
       }
-      this.loading = false
       return $state.complete()
     }
   },
-  //todo fix get error 404
+ //todo fix get error 404
   created() {
-    if (!this.foodCatOpt.length)
-      this.getFoodCategory()
-    this.myYards = [...this.yards]
+      if(!this.yardsCount)
+        this.myYards=this.yards
   }
 
 

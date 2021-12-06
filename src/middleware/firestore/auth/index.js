@@ -9,15 +9,15 @@ function createWithEmail(Email,Password){
   try {
     return fbi.firebase.auth().createUserWithEmailAndPassword(Email,Password)
   }catch {
-    console.log(error.message)
+    (error.message)
   }
 }
 
 function loginWithEmail(Email,Password){
  try {
    return fbi.firebase.auth().signInWithEmailAndPassword(Email, Password)
- }catch{
-   console.log(error.message)
+ }catch(ex){
+   console.error(ex)
  }
 }
 

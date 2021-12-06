@@ -3,7 +3,7 @@ const routes = [
     path: '/', component: () => import('layouts/MainLayout.vue'),
     children: [
       {path: 'feed', component: () => import('pages/Feed')},
-      {path: 'order', component: () => import('pages/Order')},
+      {path: 'order', component: () => import('pages/order')},
       {path: 'yardPage:id', component: () => import('pages/YardPage')},
       {path: 'addYard:id', component: () => import('pages/AddYard')},
       {path: 'addYard', component: () => import('pages/AddYard')},
@@ -22,6 +22,10 @@ const routes = [
   //   path: '/calendar',
   //   component: () => import('components/MyProfile/Calendar')
   // },
+  {
+    path: '/test',
+    component: () => import('pages/Test.vue')
+  },
   {
     path: '/reset',
     component: () => import('pages/ResetPassword')
