@@ -71,7 +71,7 @@ export default {
   createUserWithEmail: async ({}, data) => {
     const id = (await auth.createWithEmail(data.email, data.password)).user.uid
     //todo other syntax to the obj
-    const newUser = {id, firstName: data.firstName, lastName: data.lastName, email: data.email, isAChef: data.isAChef}
+    const newUser = {id, firstName: data.firstName, lastName: data.lastName, email: data.email, isAChef: data.isAChef,imgUrl: data.imgUrl}
     await FS.users.createUser(newUser)
   },
 
@@ -128,5 +128,15 @@ export default {
     // commit('setEditedYard',yard)
 
   },
+  createProfile:async ({commit,state},imageData)=> {
+    let url = imageData
+    await FS.users.uploadProfilePic(url)
+    await commit('pushPhoto',url)
+  },
+
+  updateProfile: async ({commit,state}, obj)=>{
+    commit('updatePro', obj)
+  }
+
 
 }

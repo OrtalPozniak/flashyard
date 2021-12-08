@@ -70,7 +70,7 @@
           </div>
 
           <q-card-actions align="center">
-            <q-btn @click="createUserWithEmailAndPassword(email,password,firstName,lastName,imgUrl,isAChef)" class="text-white btnAction" label="הירשם"/>
+            <q-btn @click="createUserWithEmailAndPassword(email,password,firstName,lastName,isAChef,imgUrl)" class="text-white btnAction" label="הירשם"/>
           </q-card-actions>
 
         </q-form>
@@ -94,7 +94,8 @@ export default {
       password:'',
       firstName:'',
       lastName:'',
-      isAChef:false
+      isAChef:false,
+      imgUrl:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg44qs6kg-JW8XJHY46oh18JFtuKUGHDr_x-NkhZAnFs0eFBZ0ytygPLXfYDHJj5XuzhE&usqp=CAU'
     }
   },
 
@@ -102,10 +103,10 @@ export default {
     ...mapActions('users',['createUserWithEmail','setUserDataToLocal']),
     ...mapMutations('users',['changeSignUp']),
 
-    async createUserWithEmailAndPassword(email, password, firstName, lastName,imgUrl,isAChef) {
-      await this.createUserWithEmail({email, password, firstName, lastName,imgUrl,isAChef})
+    async createUserWithEmailAndPassword(email, password, firstName, lastName,isAChef,imgUrl) {
+      await this.createUserWithEmail({email, password, firstName, lastName,isAChef,imgUrl})
       await this.setUserDataToLocal()
-      await this.$router.push('/feed')
+      await this.$router.push('/about')
     },
     /*****************setNavToTop****************
      *setAtr() is responsive to place the nav on top*

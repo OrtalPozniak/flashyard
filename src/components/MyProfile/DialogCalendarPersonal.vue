@@ -14,7 +14,7 @@
       <q-btn class="glossy" rounded color="green" label="פתח יום" @click="removeDay(day)" v-close-popup/>
     </q-card-actions>
     <q-card-actions align="right">
-      <q-btn flat label="צא" color="primary" v-close-popup/>
+      <q-btn flat label="צא" color="red-10" v-close-popup/>
     </q-card-actions>
   </q-card>
 </template>

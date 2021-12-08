@@ -1,5 +1,5 @@
 <template>
-  <div class="page YardBG" >
+  <div class="page YardBG">
     <div class="q-pa-md">
       <h3 class="text-center myTxt" style="margin-bottom:-5px;">{{ editedYard.yardName }}</h3><br>
       <div class="text-center" style="display: flex;justify-content: center;">
@@ -90,7 +90,7 @@ export default {
 
   },
   methods: {
-    ...mapActions('yards', ['setEditedYardById','reset']),
+    ...mapActions('yards', ['setEditedYardById']),
     ...mapMutations('yards', ['setEditedYardId']),
     nav() {
       this.$router.push('/order')
@@ -100,15 +100,10 @@ export default {
     },
   },
   created() {
-    console.log(this.editedYardId)
-    debugger
     if (!this.editedYardId) {
       this.setEditedYardId(this.$route.params.id)
       this.setEditedYardById()
     }
-  },
-   destroyed() {
-     this.reset()
   }
 }
 </script>

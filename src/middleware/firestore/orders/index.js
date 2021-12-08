@@ -11,11 +11,15 @@ export default {
       .catch(err => console.error(err))
   }),
   getOrderById:((Id) =>{
-  return FBI.DB().collection('orders').doc(Id).get()
-    .then(response => response.data())
-    .catch(err => console.error(err))
-}),
-
+    return FBI.DB().collection('orders').doc(Id).get()
+      .then(response => response.data())
+      .catch(err => console.error(err))
+  }),
+  updatePayment:(async (id,bool)=>{
+    return await FBI.DB().collection('orders').doc(id).update({
+      payment:bool
+    })
+  }),
   getOrdersByUserId:((userId)=>{
     return FBI.DB().collection('orders')
       .where('uidClient', '==', `${userId}`)

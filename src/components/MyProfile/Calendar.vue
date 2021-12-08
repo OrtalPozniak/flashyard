@@ -1,5 +1,5 @@
 <template>
-  <div class="profileChanger centerBoxPos">
+  <div class="menuChanger centerBoxPos">
     <q-expansion-item style="font-family: Charter;color: #c01039;font-weight: 900;" expand-separator v-model="expanded" label="ימים קבועים שבהם אני לא עובד">
       <div class="q-gutter-sm">
         <q-checkbox size="1.5rem" v-for="day in days" v-model="nonWorkDays" :val="day.num" :label="day.string"
@@ -142,20 +142,9 @@ export default {
 
 <style scoped>
 
-.profileChanger{
-  box-shadow: 0 4px 15px 0 rgba(137,133,132,0.75);
-  padding: 5vw;
-  border-radius: 3%;
-  position:relative;
-  align-content: center;
-  display:inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10vw;
-  /*min-height: 500px;*/
-}
 .calendar{
   margin: 2vw;
+  background: #fff;
 }
 
 </style>

@@ -3,9 +3,9 @@
     <div class="text-center allPage" style="flex-direction: column;">
       <div class="topDiv">
         <div>
-          <div style=" padding-top: 5vw;">
+          <div style=" padding-top: 3vw;">
             <q-avatar size="100px" class="avatarProfile">
-              <img style="width: 100%;" :src="newUser.imgUrl" alt="profile avatar picture">
+              <img style="width: 100%;" :src="newUser.imgUrl||defaultAvatar" alt="profile avatar picture">
             </q-avatar>
           </div>
           <div class="text-center txt">
@@ -21,7 +21,16 @@
           <template  v-for="n in numOfCircles">
             <transition :name="'fade-' + n">
               <div v-show="active" :class="'circle circle-' + n">
-                  <i :class="getIconCSS(n)" @click="passTo(n)"></i>
+                <div class="btnMsg">
+                  <i :class="getIconCSS(n)" @click="passTo(n)" style="margin-top: 15px;"></i>
+                  <span v-show="n==1" class="btnMsgPopUP-n">צור קשר</span>
+                  <span v-show="n==2" class="btnMsgPopUP-n">הפרופיל שלי</span>
+                  <span v-show="n==3" class="btnMsgPopUP-n">ההזמנות שלי</span>
+                  <span v-show="n==4" class="btnMsgPopUP-n"> היומן שלי</span>
+                </div>
+                <q-dialog v-model="showComp" transition-show="rotate" transition-hide="rotate">
+                  <component v-if="showComp" v-show="showComp" :is="compToShow" @closeDialog="falseDialog"></component>
+                </q-dialog>
               </div>
             </transition>
           </template>
@@ -30,7 +39,6 @@
       <div class="boxAfter"></div>
     </div>
     <div class="text-center">
-      <component v-show="showComp" :is="compToShow"></component>
     </div>
   </div>
 
@@ -44,7 +52,6 @@ import customerService from "components/MyProfile/CustomerService";
 import {mapActions, mapMutations, mapState} from "vuex";
 import FS from "src/middleware/firestore";
 
-import HistoryOrders from "components/MyProfile/HistoryOrders";
 export default {
   name: "MyProfile",
   components: {Calendar,historyOrders,personalSettings,customerService},
@@ -54,7 +61,8 @@ export default {
       compToShow:'',
       showComp:false,
       numOfCircles: 3,
-      imageUrl:''
+      imageUrl:'',
+      defaultAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK8UcZWXQTXAIfGALYptJFC3eOb5xMWiP0Yw&usqp=CAU'
     };
   },
   computed:{
@@ -70,18 +78,21 @@ export default {
       let icon = "";
       switch (n) {
         case 1:
-          icon = "fa-user";
+          icon = "fa fa-phone";
           break;
         case 2:
-          icon = "fa-cog";
+          icon = "fa fa-address-card";
           break;
         case 3:
           icon = "fa-shopping-cart";
           break;
         case 4:
-          icon = "fa-calendar";
+          icon = "fa fa-calendar";
       }
       return "fa " + icon;
+    },
+    falseDialog() {
+      this.dialog = false
     },
     passTo: function(btnPressed){
       switch (btnPressed) {
@@ -169,8 +180,8 @@ export default {
 }
 .allPage .boxAfter{
   background-color: #fff;
-  min-height: 150px;
-  margin-bottom: 3%;
+  min-height: 130px;
+  margin-bottom: 1%;
   z-index: 1;
   position: relative;
   color: #222;
@@ -222,7 +233,7 @@ export default {
 @function sin($angle) {
   $sin: 0;
   $angle: rad($angle);
-  @for $i from 0 through 10 {
+  @for $i from 0 through 4 {
     $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
   }
   @return $sin;
@@ -327,11 +338,10 @@ $circle-margin: $circle-size * 2;
     height: 100%;
     $button-size: ($circle-size / 6);
     cursor: pointer;
-    z-index: 9999;
+    z-index: 901;
     border: $button-size solid #990e1a;
     background: #990e1a;
     transition: all 0.25s ease-in;
-
   }
 }
 

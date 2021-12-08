@@ -10,13 +10,13 @@
         </q-toolbar>
       </div>
       <q-card-section>
-        <p class="text-green">יום פתוח להזמנות</p>
-        <p class="text-green"> אין אירוע ליום זה</p>
+        <p style="color: #7d0b15">יום פתוח להזמנות</p>
+        <p style="color: #7d0b15"> אין אירוע ליום זה</p>
       </q-card-section>
       <q-card-actions align="center">
         <q-btn v-if="wantToClose === false" class="glossy" rounded color="red" label="סגור יום זה לאירועים"
                @click="wantToClose = true"/>
-        <q-input v-if="wantToClose === true" bottom-slots v-model="noteText" color="deep-red-5" style="max-width: 90%"
+        <q-input v-if="wantToClose === true" bottom-slots v-model="noteText" color="red-10" style="max-width: 90%"
                  label="הערה לסגירת היום">
           <template v-slot:before>
             <q-icon name="note"/>
@@ -28,7 +28,7 @@
                v-close-popup/>
       </q-card-actions>
       <q-card-actions align="right">
-        <q-btn flat label="צא" color="primary" v-close-popup/>
+        <q-btn flat label="צא" color="red-10" v-close-popup/>
       </q-card-actions>
     </q-card>
 

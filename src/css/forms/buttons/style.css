@@ -11,16 +11,12 @@
   font-weight: 600;
   color: #FFFAF0;
   cursor: pointer;
-  margin: 20px;
+  margin: 8px;
   height: 55px;
   text-align:center;
   border: none;
   background-size: 300% 100%;
   border-radius: 50px;
-  /*moz-transition: all .4s ease-in-out;*/
-  /*-o-transition: all .4s ease-in-out;*/
-  /*-webkit-transition: all .4s ease-in-out;*/
-  /*transition: all .4s ease-in-out;*/
 }
 
 .btn-circSquare:hover {
@@ -81,9 +77,30 @@
   line-height: 18px; /* <-- adjust this */
 }
 
+/*popup message on a button*/
+.btnMsg {
+  position: relative;
+  display: inline-block;
+}
 
+.btnMsg .btnMsgPopUP-n {
+  visibility: hidden;
+  width: 100px;
+  background-color: #7d0b15;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 3px 0;
+  margin-right: 100%;
+  /* Position the btnMsg */
+  position: absolute;
+  z-index: 1;
+  right: 100%;
+}
 
-
+.btnMsg:hover .btnMsgPopUP-n {
+  visibility: visible;
+}
 
 
 
