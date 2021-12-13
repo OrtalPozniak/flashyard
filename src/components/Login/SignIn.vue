@@ -1,9 +1,9 @@
 <template >
 
   <div class=" row items-start q-gutter-md page ">
-<!--    <div>-->
-<!--      <ResetPassword v-if="forgetPass"/>-->
-<!--    </div>-->
+    <!--    <div>-->
+    <!--      <ResetPassword v-if="forgetPass"/>-->
+    <!--    </div>-->
     <q-card class="centerBoxPos shadowBox">
       <q-card-section  class="text-white" style="background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
 ">
@@ -51,7 +51,7 @@
           <!--          <q-toggle v-model="accept" label="אני מסכים לתנאי השימוש"/>-->
 
           <div align="center">
-            <q-btn @click="signInWithEmailAndPassword(Email,Password,imgUrl)" label="התחבר/י" type="submit" class="text-white"
+            <q-btn @click="signInWithEmailAndPassword(Email,Password)" label="התחבר/י" type="submit" class="text-white"
                    style="background:linear-gradient(to right,#c01039,#dc1223 67%,#de1e1e 84%,#e02a19);
 "/>
           </div>
@@ -62,7 +62,7 @@
           </div>
 
           <q-card-actions align="center" style="margin-top: 5vh">
-          <!--login with facebook require special businnes account and etc...-->
+            <!--login with facebook require special businnes account and etc...-->
             <q-btn @click="loginWithGoogle()" outline rounded color="black" label="התחבר עם גוגל" icon="fab fa-google"/>
             <q-btn @click="loginWithFacebook()" outline rounded color="black" label="התחבר עם פייסבוק" icon="fab fa-facebook"/>
 
@@ -102,29 +102,29 @@ export default {
       try{
         await this.loginUserWithEmail({Email,Password})
         await this.setUserDataToLocal()
-        await this.$router.push('/feed')
+        await this.$router.push('/about')
       }catch(e){
         return e.message;
       }
     },
 
-     loginWithGoogle() {
-       this.loginGoogle().then(()=>{
-         this.setUserDataToLocal().then(()=>{
-           this.$router.push('/feed')
-         })
-       })
+    loginWithGoogle() {
+      this.loginGoogle().then(()=>{
+        this.setUserDataToLocal().then(()=>{
+          this.$router.push('/about')
+        })
+      })
     },
 
     localChangeSignUp() {
       this.changeSignUp(true)
     },
 
-      /*it is responsible to place the nav on top of the screen responsively to screen media*/
+    /*it is responsible to place the nav on top of the screen responsively to screen media*/
     setAtr(){
       const navPos = document.querySelector('.text-white');
-        if (window.innerWidth <= 1000) navPos.classList.add('fixed-top');
-        else navPos.classList.remove('fixed-top');
+      if (window.innerWidth <= 1000) navPos.classList.add('fixed-top');
+      else navPos.classList.remove('fixed-top');
     },
 
     forgetPass(){

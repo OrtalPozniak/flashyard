@@ -6,23 +6,24 @@ export default {
   /***********************readYards****************
    *      get all yards from Firebase             *
    ***********************************************/
-  readYards: async ({commit}) => {
-    const yards = await FS_Yards.getYards()
-    commit('setYards', yards)
-  },
+  readYards: async({commit})=>{
+    const yards=await FS_Yards.getYards()
+    commit('setYards',yards)
+},
 
-  createYardId: async () => {
+  createYardId: async ()=>{
     return FS_Yards.createYardId()
   },
 
   updateYard: async ({state, commit, dispatch}) => {
-    const yard = {}
-    Object.assign(yard, state.editedYard)
-    delete yard.id
-      await FS_Yards.updateYard(yard)
-    commit('editYard')
+    const yard={}
+    Object.assign(yard,state.editedYard)
+    yard.id = state.editedYardId
+    await FS_Yards.updateYard(yard,state.editedYardId)
+    commit('editYard',yard)
     dispatch('reset')
   },
+
   getFoodCategory: async ({commit}) => {
     await FS_Yards.getFoodCat()
       .then((res) => {
@@ -30,19 +31,18 @@ export default {
       })
   },
 
-
   insertYard: async ({state, commit, dispatch}) => {
-    const yard = {}
-    Object.assign(yard, state.editedYard)
+    const yard={}
+    Object.assign(yard,state.editedYard)
     delete yard.id
 
-    //save to DB
-    console.log('-----yards state before update DB', state.yards)
-    await FS_Yards.createYard(yard, state.editedYard.id)
+   //save to DB
+    console.log('-----yards state before update DB',state.yards)
+    await FS_Yards.createYard(yard,state.editedYard.id)
     console.log('after push to DB')
     //save to store
-    await commit('insertYard')
-    console.log('after update  yards state')
+     await commit('insertYard',yard)
+    console.log('after update yards state')
     dispatch('reset')
   },
   /***************setEditedYardById****************
@@ -57,23 +57,11 @@ export default {
     }
     commit('setEditedYard', yard)
   },
-
   /***************reset****************************
    *     reset editedYardId & editedYardId        *
    ***********************************************/
-
   reset: ({commit}) => {
     commit('resetEditedYardId')
-    debugger
     commit('resetEditedYard')
-  },
-
-  /***************reset****************************
-   *                       delete Allyards        *
-   ***********************************************/
-  delAllYards: ({commit}) => {
-    commit('deleteAllYards')
   }
 }
-
-

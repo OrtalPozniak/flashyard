@@ -8,6 +8,8 @@ const db = admin.firestore();
 exports.sendEmailNotification = functions.firestore.document('orders/{docId}')
   .onCreate((snap, ctx) => {
     const data = snap.data();
+    debugger;
+    console.log(data)
     let authData = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
@@ -19,11 +21,19 @@ exports.sendEmailNotification = functions.firestore.document('orders/{docId}')
     });
     authData.sendMail({
       from: 'dlevy28@gmail.com',
-      to: `dlevy28@gmail.com`,
-      subject: 'Your submission Info',
-      text: `${data.email}`,
-      html: `${data.email}`,
-    }).then(res => console.log('successfully sent that mail', `${data.email}`)).catch(err => console.log(err));
+      to:  ` ortalooshp@gmail.com , dlevy28@gmail.com `,
+      subject: 'ההזמנה הושלמה בהצלחה',
+      html: '<b>אורח יקר שלום , </b><br /><br />קיבלנו את הזמנתך ואנו נרגשים לארח אותך אצלנו בחצר ולהעניק לך חווית אירוח ברמה הגבוהה ביותר, <br /> '+
+        ' <br/>אנו שומרים לך את התאריך המבוקש למשך כ-15 דקות מרגע ביצוע ההזמנה.<br /> <br /><img src="cid:flashYLogo" alt="flashYLogo" width="150"/>',
+      attachments: [
+        {
+          filename: 'flashYLogo.png',
+          path: __dirname + '/images/flashYLogo.png',
+          cid: 'flashYLogo',
+          width: 100
+        }
+      ]
+      }).then(res => console.log('successfully sent that mail', `${data.email}`)).catch(err => console.log(err));
 
   });
 

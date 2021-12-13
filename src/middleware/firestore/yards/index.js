@@ -88,8 +88,6 @@ async function _deleteImageFile(image) {
   await imageRef.delete()
 }
 
-
-
 export default {
   getYards,
   getYardById,

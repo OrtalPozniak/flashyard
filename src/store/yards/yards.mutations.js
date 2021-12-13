@@ -35,14 +35,9 @@ export default {
     delete state.editedYard.id;
   }),
 
-  editYard: ((state,yard) => {
+  editYard: ((state) => {
     const index = state.yards.findIndex(y => y.id === state.editedYard.id)
-    state.yards.splice(index, 1, yard)
-  }),
-
-  deleteAllYards:((state)=>{
-    state.yards=[]
-    state.yardsCount=true
+    state.yards.splice(index, 1, state.editedYard)
   }),
 
   deleteYard: ((state, yardId) => {

@@ -55,10 +55,11 @@ html, body {
 }
 
 .fieldInput {
-  margin: 20px 0;
+  margin: 10px 0;
   padding: 15px 15px;
   border-radius: 15px;
   border: none;
+  width: 300px;
   background: #F6F7F9;
    color: #403e3e;
 }
@@ -67,22 +68,28 @@ input:focus{
   border: 2px solid #c01039;
 }
 
-.profileChanger{
+.menuChanger{
   border: 1px solid lightgray;
   box-shadow: 0 4px 15px 0 rgba(137,133,132,0.75);
-  padding: 5vw;
-  border-radius: 3%;
+  padding: 3vw;
+  border-radius: 8px;
+  flex-direction: column;
   position:relative;
   align-content: center;
   display:inline-flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
   margin-bottom: 10vw;
+  background: #fff;
 }
 .headline{
   font-family: 'Palanquin Dark',sans-serif;
 }
 .fontWeb{
+font-weight: bolder;
+  font-family: 'Palanquin Dark', sans-serif;
+}
+
+.headline{
   font-family: Rubik;
 }

@@ -1,24 +1,12 @@
 <template class="page">
-  <div class="profileChanger centerBoxPos text-center">
-    <div style="display:flex;flex-direction: column;"  class="text-center">
-      <label class="lbl" >ערוך פרופיל</label>
-      <div class="text-center">
-        <img :src="imageUrl" height="150" width="150" style="border-radius: 50%;">
-      </div>
-      <div class="centerWidth text-center">
-        <div class="text-center" >
-          <input type="text" v-model="fname" class="text-center fieldInput" alt="first name" :placeholder="newUser.firstName">
-        </div>
-        <div class="text-center">
-          <input type="text" v-model="lname" class="text-center fieldInput" alt="last name" :placeholder="newUser.lastName">
-        </div>
-      </div>
-      <div class="text-center centerWidth">
-      <button class=" btn-circSquare btnSize myColor text-center" @click="onPickFile" >החלף תמונת פרופיל</button>
-      <input type="file" style="display: none;" ref="fileInput" accept="image/*" @change="previewImage" >
-      <button class="btn-circSquare text-center btnSize coverBtn oppositeColor" :disabled="!formIsValid" type="submit" icon="save" @click="onUpload">עדכן פרופיל</button>
-      </div>
-    </div>
+  <div class="menuChanger text-center menuWidth" style="flex-direction: column;position: relative;">
+    <label class="lbl" >ערוך פרופיל</label>
+    <img :src="imageUrl" class="profilePic">
+    <input type="file" style="display: none;" ref="fileInput" accept="image/*" @change="previewImage" >
+    <input type="text" v-model="fname" class="text-center fieldInput" alt="first name" :placeholder="this.newUser.firstName">
+    <input type="text" v-model="lname" class="text-center fieldInput" alt="last name" :placeholder="this.newUser.lastName">
+    <button class=" btn-circSquare btnSize myColor" @click="onPickFile" style="margin-top: 1vw;">החלף תמונת פרופיל</button>
+    <button class="btn-circSquare btnSize coverBtn oppositeColor" :disabled="!formIsValid" type="submit" icon="save" @click="onUpload">עדכן פרופיל</button>
   </div>
 </template>
 
@@ -60,11 +48,11 @@ export default {
           this.imageUrl= e.target.result;
         }
         reader.readAsDataURL(this.imageData);
+      }else{
+        this.imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg44qs6kg-JW8XJHY46oh18JFtuKUGHDr_x-NkhZAnFs0eFBZ0ytygPLXfYDHJj5XuzhE&usqp=CAU'
       }
-
     },
     async onUpload(){
-
       this.imageUrl = '';
       const storageRef = await firebase.storage().ref()
       const idUser = window.user.uid
@@ -103,7 +91,7 @@ export default {
       }
       else this.imageUrl = this.newUser.imgUrl
       await this.updateProfile({firstName:this.fname,lastName:this.lname,imageUrl:this.imageUrl})
-      console.log(this.newUser.imgUrl)
+      // console.log(this.newUser.imgUrl)
 
     },
     onPickFile(){
@@ -125,21 +113,26 @@ export default {
 .coverBtn{
   background: none !important;
 }
-
 .coverBtn:hover{
   opacity: 0.8;
 }
-.centerWidth{
-  width: 400px;
+.menuWidth{
+  width:40vw;
 }
 
 .btnSize{
-  width: 60%;
+  width: 50%;
 }
 .lbl{
   font-family:'Rubik', sans-serif;
   font-size: large;
   color: gray;
-  margin-bottom: 5%
+  margin-bottom: 3%
+}
+.profilePic{
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-bottom: 1vw;
 }
 </style>

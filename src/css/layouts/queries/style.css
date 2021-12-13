@@ -11,13 +11,13 @@
   .formInput{
     width:70% !important;
   }
-.txt{
-  margin-top: 5vw !important;
-  margin-bottom: 10vw !important;
-}
-.calendar{
-  margin: 10vw !important;
-}
+  .txt{
+    margin-top: 5vw !important;
+    margin-bottom: 10vw !important;
+  }
+  .calendar{
+    margin: 10vw !important;
+  }
   .seperator{
     display: none;
     visibility: hidden;
@@ -29,8 +29,11 @@
   .boxWidth{
     width: 100%
   }
+  .menuWidth{
+    width: 100%;
+  }
   .yardContainer{
-   flex-direction: column !important;
+    flex-direction: column !important;
     display: block !important;
   }
   .card-category{
@@ -47,11 +50,11 @@
     width: 100px;
   }
   .btnSize.btn-circSquare.myColor{
-    margin-bottom: 4% !important;
+    /*margin-bottom: % !important;*/
   }
-  .btn-circSquare.myColor{
-    margin-bottom: 15%;
-  }
+  /*.btn-circSquare.myColor{*/
+  /*  margin-bottom: 15%;*/
+  /*}*/
   .YardBG{
     height: 100%;
   }
@@ -95,8 +98,11 @@
   .cancelBtn{
     margin-left: 0px !important;
   }
+  .menuWidth{
+    width: 100% !important;
+  }
   .meetTeam {
-   flex-direction: column;
+    flex-direction: column;
   }
   .aboutSectionMid{
     height: 90% !important;
@@ -109,6 +115,14 @@
   }
   .card-title{
     height: 10vw !important;
+  }
+  .profilePic{
+    width: 80px !important;
+    height: 80px !important;
+  }
+ .fieldInput {
+    margin: 7px 0;
+    padding: 8px 10px;
   }
   .aboutSectionDown {
     height: 100vh;
