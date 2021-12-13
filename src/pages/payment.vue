@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="CountDown">
-      <CountDown @timerStop="timerStop()"/>
+<!--      <CountDown @timerStop="timerStop()"/>-->
     </div>
     <div class="component">
       <payment-inputs></payment-inputs>

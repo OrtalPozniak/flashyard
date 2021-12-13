@@ -3,14 +3,19 @@ export default {
   orderId: '',
 
   orderDetails: {
-      uidChef:'',
-      uidYard:'',
-      uidClient:'',
+    creationTime: undefined,
+    date: undefined,
+    email: '',
     notes: [],
     numOfPeople: 0,
-    date: undefined,
+    payment: false,
     pricePerHead: 0,
-    email:'',
-    payment:false,
+    totalPrice: 0,
+    uidChef: '',
+    uidClient: '',
+    uidYard: '',
   }
 }
+
+
+

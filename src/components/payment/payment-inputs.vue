@@ -1,54 +1,5 @@
-<!--<template>-->
-<!--  <div class="payment-card">-->
-<!--    <q-card flat borderedclass="card">-->
-<!--      <q-card-section>-->
-<!--        <div class="text-h5">פרטי לקוח</div>-->
-<!--      </q-card-section>-->
-
-<!--      <q-card-section class="inputs">-->
-<!--        <input :placeholder="newUser.firstName||'שם פרטי'   " v-model="firstName" class="text-center fieldInput"/>-->
-<!--        <input :placeholder="newUser.lastName||'שם משפחה'   " v-model="lastName" class="text-center fieldInput"/>-->
-<!--        <input placeholder=" מספר ת.ז של בעל הכרטיס" v-model="idOfUser" class="text-center fieldInput"/>-->
-<!--        <input placeholder="טלפון לבירורים" v-model="phone" class="text-center fieldInput"/>-->
-<!--      </q-card-section>-->
-
-<!--      <q-separator color="red" size="0.5px"/>-->
-
-<!--      <q-card-section>-->
-<!--        <div class="text-h5">פרטי תשלום</div>-->
-<!--      </q-card-section>-->
-
-<!--      <q-card-section class="inputs">-->
-<!--        <input placeholder="אנא הזן פרטי כרטיס אשראי" v-model="creditCard" class="text-center fieldInput"/>-->
-<!--        <input placeholder="תוקף" v-model="validity" class="text-center fieldInput"/>-->
-<!--        <input placeholder="CVV" v-model="CVV" class="text-center fieldInput" maxlength="3"/>-->
-<!--        <input placeholder="תשלומים" v-model="numOfPay" class="text-center fieldInput"/>-->
-<!--      </q-card-section>-->
-
-<!--      <q-separator color="red" size="0.5px"/>-->
-
-<!--      <q-card-section>-->
-<!--        <div class="text-h5">השלמת עסקה</div>-->
-<!--      </q-card-section>-->
-
-<!--      <q-card-section class="inputs">-->
-<!--        <input placeholder="סכום עסקה:" v-model="sumOrder" type="number" class="text-center fieldInput"/>-->
-<!--        <div>-->
-<!--          <q-btn class="btn-circSquare myColor"-->
-<!--                 style="align-items: center; justify-items: center;justify-content: center;" label="אישור ומעבר לתשלום"-->
-<!--                 @click="slockOti()"></q-btn>-->
-<!--        </div>-->
-<!--      </q-card-section>-->
-
-<!--    </q-card>-->
-<!--  </div>-->
-<!--</template>-->
-
-
 <template>
-  <div class="q-pa-md">
-<!--    <q-btn label="Reset" push color="white" text-color="negative" @click="step = 1" class="q-mb-md"/>-->
-
+  <div class=" q-pa-md" style="margin: 3vw;">
     <q-stepper
       v-model="step"
       header-nav
@@ -65,13 +16,14 @@
         :header-nav="step > 1"
       >
         <div class="floating" v-for="input of inputsStep1">
-          <input :id="input.id" class="floating__input" :type="input.type" :placeholder="input.placeholder" v-model="input.vModel"/>
+          <input :id="input.id" class="floating__input" :type="input.type" :placeholder="input.placeholder"
+                 v-model="input.vModel" :readonly="input.readonly" :disabled="input.disabled"/>
           <label :for="input.id" class="floating__label" :data-content="input.dataContent">
             <span class="hidden--visually">input.id</span></label>
         </div>
 
         <q-stepper-navigation>
-          <q-btn @click="() => { done1 = true; step = 2 }" color="negative" label="Continue"/>
+          <q-btn @click="() => { done1 = true; step = 2 }" color="negative" label="הבא" class="q-ma-md absolute-bottom-right"/>
         </q-stepper-navigation>
       </q-step>
 
@@ -84,15 +36,14 @@
         :header-nav="step > 2"
       >
         <div class="floating" v-for="input of inputsStep2">
-          <input :id="input.id" class="floating__input" :type="input.type" :placeholder="input.placeholder" v-model="input.vModel"/>
+          <input :id="input.id" class="floating__input" :type="input.type" :placeholder="input.placeholder"
+                 v-model="input.vModel" :readonly="input.readonly" :disabled="input.disabled"/>
           <label :for="input.id" class="floating__label" :data-content="input.dataContent">
             <span class="hidden--visually">input.id</span></label>
         </div>
-
-
         <q-stepper-navigation>
-          <q-btn @click="() => { done2 = true; step = 3 }" color="negative" label="Continue"/>
-          <q-btn flat @click="step = 1" color="negative" label="Back" class="q-ml-sm"/>
+          <q-btn @click="() => { done2 = true; step = 3 }" color="negative" label="הבא" class="q-ma-md absolute-bottom-right"/>
+          <q-btn flat @click="step = 1" color="negative" label="חזור" class="q-ma-md absolute-bottom-left"/>
         </q-stepper-navigation>
       </q-step>
 
@@ -103,14 +54,15 @@
         :header-nav="step > 3"
       >
         <div class="floating" v-for="input of inputsStep3">
-          <input :id="input.id" class="floating__input" :type="input.type" :placeholder="input.placeholder "v-model="input.vModel" readonly="readonly"  disabled="disabled"/>
+          <input :id="input.id" class="floating__input" :type="input.type" :placeholder="input.placeholder "
+                 v-model="input.vModel" :readonly="true" :disabled="true"/>
           <label :for="input.id" class="floating__label" :data-content="input.dataContent">
             <span class="hidden--visually">input.id</span></label>
         </div>
 
         <q-stepper-navigation>
-          <q-btn color="negative" @click="done3 = true" label="Finish"/>
-          <q-btn flat @click="step = 2" color="negative" label="Back" class="q-ml-sm"/>
+          <q-btn color="negative" @click="finishPay" label="אשר עסקה" class="q-ma-md absolute-bottom-right"/>
+          <q-btn flat @click="step = 2" color="negative" label="חזור" class="q-ma-md absolute-bottom-left"/>
         </q-stepper-navigation>
       </q-step>
     </q-stepper>
@@ -126,34 +78,89 @@ export default {
   name: "payment-inputs",
   computed: {
     ...mapState('users', ['users', 'newUser']),
-    ...mapState('order', ['orderId']),
-    inputsStep3(){
-      return [...this.inputsStep1,...this.inputsStep2]
-    }
+    ...mapState('order', ['orderId', 'orderDetails']),
+    inputsStep3() {
+      return [...this.inputsStep1, ...this.inputsStep2]
+    },
   },
   data() {
     return {
-      inputsStep1: [{id: 'firstName', placeholder: 'firstName',vModel:"", dataContent: 'שם פרטי', type: 'text'},
-        {id: 'lastName', placeholder: 'lastName',vModel:"", dataContent: 'שם משפחה', type: 'text'},
-        {id: 'phone', placeholder: 'phone',vModel:"", dataContent: 'טלפון לבירורים', type: 'tel'},
+      sumDeal: 0,
+      inputsStep1: [{
+        id: 'firstName',
+        placeholder: 'firstName',
+        vModel: "",
+        dataContent: 'שם פרטי',
+        type: 'text',
+        readonly: false,
+        disabled: false
+      },
+        {
+          id: 'lastName',
+          placeholder: 'lastName',
+          vModel: "",
+          dataContent: 'שם משפחה',
+          type: 'text',
+          readonly: false,
+          disabled: false
+        },
+        {
+          id: 'phone',
+          placeholder: 'phone',
+          vModel: "",
+          dataContent: 'טלפון לבירורים',
+          type: 'tel',
+          readonly: false,
+          disabled: false
+        },
       ],
-      inputsStep2: [{id: 'idOfUser', placeholder: 'idOfUser',vModel:"", dataContent:'מספר ת.ז של בעל הכרטיס', type: 'number'},
-        {id: 'creditCard', placeholder: 'creditCard',vModel:"", dataContent: 'אנא הזן פרטי כרטיס אשראי', type: 'number'},
-        {id: 'validity', placeholder: 'validity',vModel:"", dataContent: 'תוקף', type: 'text'},
-        {id: 'CVV', placeholder: 'CVV',vModel:"", dataContent: 'CVV', type: 'number'},
-        {id: 'numOfPay', placeholder: 'numOfPay',vModel:"", dataContent: 'מספר תשלומים', type: 'number'},
-        {id: 'sumOrder', placeholder: 'sumOrder',vModel:"", dataContent: 'סכום עסקה', type: 'number'},
+      inputsStep2: [{
+        id: 'idOfUser',
+        placeholder: 'idOfUser',
+        vModel: "",
+        dataContent: 'מספר ת.ז של בעל הכרטיס',
+        type: 'number',
+        readonly: false,
+        disabled: false
+      },
+        {
+          id: 'creditCard',
+          placeholder: 'creditCard',
+          vModel: "",
+          dataContent: 'אנא הזן פרטי כרטיס אשראי',
+          type: 'number',
+          readonly: false,
+          disabled: false
+        },
+        {
+          id: 'validity',
+          placeholder: 'validity',
+          vModel: "",
+          dataContent: 'תוקף',
+          type: 'text',
+          readonly: false,
+          disabled: false
+        },
+        {
+          id: 'CVV',
+          placeholder: 'CVV',
+          vModel: "",
+          dataContent: 'CVV',
+          type: 'number',
+          readonly: false,
+          disabled: false
+        },
+        {
+          id: 'numOfPay',
+          placeholder: 'numOfPay',
+          vModel: "",
+          dataContent: 'מספר תשלומים',
+          type: 'number',
+          readonly: false,
+          disabled: false
+        },
       ],
       step: 1,
-      firstName: null,
-      lastName: '',
-      idOfUser: '',
-      phone: '',
-      creditCard: '',
-      validity: '',
-      CVV: '',
-      numOfPay: '',
-      sumOrder: '',
     }
   },
   methods: {
@@ -196,11 +203,24 @@ export default {
         }
       }, 500)
     },
-    async slockOti() {
+    async finishPay() {
       debugger
       await this.updatePaymentToTrue(this.orderId)
       this.showCustom()
     }
+  },
+  created() {
+    this.sumDeal = this.orderDetails.totalPrice
+    let sumOrder = {
+      id: 'sumOrder',
+      placeholder: 'sumOrder',
+      vModel: `${this.sumDeal}`,
+      dataContent: 'סכום עסקה',
+      type: 'text',
+      readonly: true,
+      disabled: true
+    }
+    this.inputsStep2.push(sumOrder)
   }
 }
 </script>

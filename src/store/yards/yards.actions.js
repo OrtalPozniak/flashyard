@@ -18,18 +18,22 @@ export default {
   updateYard: async ({state, commit, dispatch}) => {
     const yard={}
     Object.assign(yard,state.editedYard)
-    yard.id = state.editedYardId
+    delete yard.id
+    debugger
+    console.log(yard)
+    console.log(state.editedYardId)
     await FS_Yards.updateYard(yard,state.editedYardId)
+    yard.id=state.editedYardId
     commit('editYard',yard)
     dispatch('reset')
   },
-
   getFoodCategory: async ({commit}) => {
     await FS_Yards.getFoodCat()
       .then((res) => {
         commit('setFoodCategories', res)
       })
   },
+
 
   insertYard: async ({state, commit, dispatch}) => {
     const yard={}
@@ -42,7 +46,7 @@ export default {
     console.log('after push to DB')
     //save to store
      await commit('insertYard',yard)
-    console.log('after update yards state')
+    console.log('after update  yards state')
     dispatch('reset')
   },
   /***************setEditedYardById****************
@@ -63,5 +67,14 @@ export default {
   reset: ({commit}) => {
     commit('resetEditedYardId')
     commit('resetEditedYard')
+  },
+
+  /***************reset****************************
+   *                       delete Allyards        *
+   ***********************************************/
+  delAllYards: ({commit}) => {
+    commit('deleteAllYards')
   }
 }
+
+
