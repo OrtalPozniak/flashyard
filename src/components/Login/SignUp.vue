@@ -8,7 +8,8 @@
       </q-card-section>
 
       <q-separator/>
-      <div class="q-pa-md" style="padding-top: 5vh;">
+      <div style="width: 90%" align="center">
+      <div class="q-pa-md" style="padding-top: 5vh;" align="left">
 
         <q-form
           class="q-gutter-md topSpaceForm"
@@ -18,7 +19,7 @@
             <q-input
               filled
               required
-              style=" display:inline-grid; width:75%"
+              style=" display:inline-grid; width:70%"
               v-model="email"
               label='דוא"ל'
               lazy-rules
@@ -26,12 +27,12 @@
             />
           </div>
 
-          <div>
+          <div >
             <q-avatar icon="vpn_key" size="75px"/>
             <q-input
               filled
               required
-              style=" display:inline-grid; width:72%"
+              style=" display:inline-grid; width:70%"
               type="Password"
               v-model="password"
               label="סיסמה"
@@ -40,11 +41,11 @@
             val => val !== null && val.length > 5 || 'הקש/י סיסמה']"
             />
           </div>
-          <div align="center">
+          <div >
             <q-input
               filled
               required
-              style=" display:inline-grid; width:71%"
+              style=" display:inline-grid; width:70%"
               type="firstName"
               v-model="firstName"
               label="שם פרטי"
@@ -52,11 +53,11 @@
               :rules="[ val => val.length >= 2 || 'מלא/י שם פרטי']"
             />
           </div>
-          <div align="center">
+          <div >
             <q-input
               filled
               required
-              style=" display:inline-grid; width:72%"
+              style=" display:inline-grid; width:70%"
               type="lastName"
               v-model="lastName"
               label="שם משפחה"
@@ -76,7 +77,7 @@
         </q-form>
 
       </div>
-
+</div>
 
     </q-card>
   </div>

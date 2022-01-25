@@ -1,6 +1,8 @@
 import FBI from '../../../middleware/firebase'
+import {error} from "firebase-functions/lib/logger";
 
 let lastDoc = null
+
 async function getYards() {
   let db = await FBI.DB().collection('yards').limit(3)
   if (lastDoc) {
@@ -63,29 +65,40 @@ async function getIdOrderFromYardOrders(id) {
 async function uploadYardsImages(options) {
   // console.log("option from upload", options)
   const yardRef = FBI.firebase.storage().ref(`yardsImages/haim/${options.yardId}`);
-  const urlArray=[]
+  let urlArray=[]
   for(let img of options.images){
-    urlArray.push(await _insertImageFile(yardRef,img,options.yardId));
+    await _insertImageFile(yardRef,img,options.yardId);
   }
+  urlArray = await _getAllImagesURL(yardRef)
+  debugger
   return urlArray
 }
 
 async function deleteYardsImages(options) {
-  console.log("images to delete - firestore")
-  await _deleteImageFile(options)
+  const yardRef = await _deleteImageFile(options)
+  const urlArray = await _getAllImagesURL(yardRef)
+  return urlArray
 
 }
 
+async function _getAllImagesURL(yardRef) {
+  const images = await yardRef.listAll()
+  return Promise.all(images.items.map(async image => {
+    return await image.getDownloadURL()
+  }))
+}
+
 async function _insertImageFile(yardRef, image, yardId) {
-  const yardFolder = yardRef.child(`${yardId}_${Math.random() * 1000}`);
-  let res = await yardFolder.put(image)
-  return  await res.ref.getDownloadURL()
+  await FBI.firebase.storage().ref(`${yardRef.fullPath}/${yardId}_${Math.random() * 1000}`).put(image);
 }
 
 async function _deleteImageFile(image) {
   const storage = FBI.firebase.storage()
+  debugger
   const imageRef = await storage.refFromURL(image)
+  const yardRef = imageRef.parent
   await imageRef.delete()
+  return yardRef
 }
 
 export default {

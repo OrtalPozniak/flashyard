@@ -61,8 +61,7 @@ export default {
   },
   //todo fix get error 404
   created() {
-    if (!this.foodCatOpt.length)
-      this.getFoodCategory()
+    if (!this.yardsCount)
     this.myYards = [...this.yards]
   }
 

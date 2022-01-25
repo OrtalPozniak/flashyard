@@ -36,11 +36,15 @@ export default {
   }),
 
   editYard: ((state,yard) => {
-    debugger
-    const index = state.yards.findIndex(y => y.id === yard.id)
+    const index = state.yards.findIndex(y => y.id === state.editedYardId)
+    if(index!==-1)
+      //if index=-1 yard not exist in state  , so no change to state
     state.yards.splice(index, 1, yard)
   }),
-
+  deleteAllYards:((state)=>{
+    state.yards=[]
+    state.yardsCount=true
+  }),
   deleteYard: ((state, yardId) => {
     const index = state.yards.findIndex(y => y.id === yardId)
     state.yards.splice(index, 1)

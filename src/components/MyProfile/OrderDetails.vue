@@ -17,8 +17,6 @@
           <span  v-else class="bg-red">לא שולם
         </span></p>
       </q-card-section>
-
-      <!--      <p class="text-weight-bold" @click="goToYard(order.uidYard)">עבור לחצר</p>-->
       <q-card-section class="order_details_notes">
         <h6 class="text-center">הערות להזמנה</h6>
         <q-list v-if="order.notes.length>0">
@@ -28,9 +26,9 @@
         </q-list>
         <p v-else>אין הערות להזמנה</p>
       </q-card-section>
-      <q-card-actions class="order_actions">
-        <q-btn class="bg-orange" @click="$router.push(`/YardPage${order.uidYard}`)" label="עבור לחצר"/>
-        <q-btn class="bg-red" label="סגירה" @click="$emit('closeDialog')"/>
+      <q-card-actions class="order_actions text-center">
+        <q-btn  class="shadowBtn myColor" style="border: 3px solid #c01039" @click="$router.push(`/YardPage${order.uidYard}`)" label="עבור לחצר"/>
+        <q-btn  class=" oppositeColor" label="סגירה" @click="$emit('closeDialog')"/>
       </q-card-actions>
     </q-card>
   </div>
@@ -76,7 +74,6 @@ export default {
 }
 .order_actions{
   display: block;
-  margin-left: 45px;
-
+  padding: 2vw;
 }
 </style>

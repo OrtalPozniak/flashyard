@@ -193,8 +193,8 @@ li>.ch-item{
   opacity: 0;
 }
 .ch-img-1 {
-  background-image: url("https://scontent.fsdv3-1.fna.fbcdn.net/v/t31.18172-8/21731706_10154909619666304_4633877268999875945_o.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=H3gpKcGcqncAX-UZgR8&_nc_ht=scontent.fsdv3-1.fna&oh=93eaa71b826aa64deb830461bb152e0d&oe=61BAA17B");
-  background-size: cover;
+background-image: url(../assets/ortal.jpg);
+background-size: cover;
 }
 
 .ch-img-2 {

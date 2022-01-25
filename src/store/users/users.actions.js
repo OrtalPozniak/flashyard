@@ -60,7 +60,7 @@ export default {
       localStorage.removeItem("yardId")
       localStorage.removeItem("isAChef")
       commit('', false)
-      await this.$router.push('/login')
+      await this.$router.push('/')
     } catch (err) {
       // An error happened.
       console.log("there have been an error signing out", err);

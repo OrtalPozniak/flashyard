@@ -7,6 +7,8 @@
     <input type="text" v-model="lname" class="text-center fieldInput" alt="last name" :placeholder="this.newUser.lastName">
     <button class=" btn-circSquare btnSize myColor" @click="onPickFile" style="margin-top: 1vw;">החלף תמונת פרופיל</button>
     <button class="btn-circSquare btnSize coverBtn oppositeColor" :disabled="!formIsValid" type="submit" icon="save" @click="onUpload">עדכן פרופיל</button>
+    <q-btn flat label="צא" color="red-10" v-close-popup/>
+
   </div>
 </template>
 

@@ -1,8 +1,12 @@
 const routes = [
   {
+    path: '/',
+    component: () => import('pages/Login')
+  },
+  {
     path: '/', component: () => import('layouts/MainLayout.vue'),
     children: [
-      {path: 'feed', component: () => import('pages/Feed')},
+      {path: '/feed', component: () => import('pages/Feed')},
       {path: 'order', component: () => import('pages/order')},
       {path: 'yardPage:id', component: () => import('pages/YardPage')},
       {path: 'addYard:id', component: () => import('pages/AddYard')},
@@ -11,12 +15,8 @@ const routes = [
       {path: 'payment', component: () => import('pages/payment')},
       { path: 'MyProfile', component: () => import('pages/MyProfile')},
       {path: 'addChef', component: () => import('pages/addChef')},
-      {path: 'about' , component: () => import('pages/About')}
+      {path: '/about' , component: () => import('pages/About')}
     ]
-  },
-  {
-    path: '/login',
-    component: () => import('pages/Login')
   },
   // {
   //   path: '/calendar',
